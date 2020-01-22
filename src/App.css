@@ -33,7 +33,7 @@
 .score {
   background-color: rgb(48, 48, 48);
   font-size: calc(6vmin);
-  font-family: 'Courier New';
+  font-family: "Courier New";
   font-weight: 600;
   text-align: center;
   border-radius: 2vmin;
@@ -42,7 +42,7 @@
   box-sizing: border-box;
 }
 
-.input{ 
+.input {
   display: flex;
   flex-direction: column;
   align-items: center;
