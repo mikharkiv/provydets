@@ -1,16 +1,16 @@
 import React from 'react';
 
 function Body() {
-  return(
+  return (
     <section className="App-body">
-      <Scoreboard/>
-      <Inputs/>
+      <Scoreboard />
+      <Inputs />
     </section>
   );
 }
 
 function Scoreboard() {
-  return(
+  return (
     <div className="scoreboard">
       <Score name="PC" score="0"></Score>
       <Score name="Player" score="0"></Score>
@@ -19,22 +19,36 @@ function Scoreboard() {
 }
 
 function Inputs() {
-  return(
+  return (
     <div className="input">
       <Listen/>
+      <Type/>
     </div>
   )
 }
 
 function Listen() {
-  return(
-    <button className="listen">
-      
-    </button>
+  return (
+    <div className="listen">
+      <img src="./res/mic.svg" className="mic"></img>
+      <button className="listen-button">
+        Audio
+      </button>
+    </div>
+  )
+}
+function Type() {
+  return (
+    <div className="type">
+      <img src="./res/lyrics.svg" className="lyrics"></img>
+      <button className="listen-button">
+        Lyrics
+      </button>
+    </div>
   )
 }
 
-class Score extends React.Component{
+class Score extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
