@@ -22,6 +22,9 @@ function Inputs() {
   return (
     <div className="input">
       <Listen/>
+      <div class="or">
+        OR
+      </div>
       <Type/>
     </div>
   )
@@ -41,9 +44,8 @@ function Type() {
   return (
     <div className="type">
       <img src="./res/lyrics.svg" className="lyrics"></img>
-      <button className="listen-button">
-        Lyrics
-      </button>
+      <textarea className="listen-button" placeholder="Your lyrics..." >
+      </textarea>
     </div>
   )
 }
