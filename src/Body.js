@@ -3,7 +3,7 @@ import React from 'react';
 function Body() {
   return (
     <section className="App-body">
-      {/* <Inputs /> HIDDEN TEMPORARILY*/}
+      <Inputs />
     </section>
   );
 }
@@ -11,11 +11,11 @@ function Body() {
 function Inputs() {
   return (
     <div className="input">
-      <Listen/>
+      <Listen />
       <div class="or">
         OR
       </div>
-      <Type/>
+      <Type />
     </div>
   )
 }
@@ -24,9 +24,14 @@ function Listen() {
   return (
     <div className="listen">
       <img src="./res/mic.svg" className="mic"></img>
-      <button className="listen-button">
-        Audio
-      </button>
+      <div className="audio-type-selection">
+        <button className="button">
+          Song
+        </button>
+        <button className="button">
+          Humming
+        </button>
+      </div>
     </div>
   )
 }
@@ -34,7 +39,7 @@ function Type() {
   return (
     <div className="type">
       <img src="./res/lyrics.svg" className="lyrics"></img>
-      <textarea className="listen-button" placeholder="Your lyrics..." >
+      <textarea className="textarea" rows="2" placeholder="Your lyrics..." >
       </textarea>
     </div>
   )

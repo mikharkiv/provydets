@@ -91,31 +91,51 @@ a:hover {
 
 .mic,
 .lyrics {
-  height: 20vh;
+  height: 20vmin;
   box-sizing: border-box;
 }
 
 .or {
-  font-size: 48px;
+  font-size: calc(24px + 4vmin);
 }
 
 .listen,
 .type {
-  width: 30%;
+  max-width: 500px;
+  width: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.listen-button {
+.audio-type-selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
   width: 100%;
-  margin: 1rem 0px;
+}
+
+.audio-type-selection > button {
+   width: 100%;
+   margin: 1rem;
+}
+
+.textarea {  
+  font-family: 'Oswald', sans-serif;
   font-size: calc(14px + 2vmin);
-  color: #dbdfac;
+  color: rgba(241, 245, 242, 1);
   border: none;
+  margin: 1rem;
   border-radius: 1vmin;
-  background-color: #303030;
+  background-color: #A53860;
   resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textarea::placeholder {
+  color: rgba(241, 245, 242, 0.7);
 }
 
 .button-group {
@@ -136,8 +156,6 @@ a:hover {
   padding: 0.5rem 1rem;
   font-size: calc(3vmin);
   border-radius: 1vmin;
-  display: flex;
-  align-items: center;
   text-align: center;
   text-transform: uppercase;
   color: rgba(241, 245, 242, 0.7);
