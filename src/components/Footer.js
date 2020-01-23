@@ -5,7 +5,7 @@ function Footer() {
 		<footer className="App-footer">
 			<p>
 				Need help? | Developed by Michael Postnikov, Kyrylo Turina,
-				Vadym Nakytnyak, 2020 | <a href="https://github.com/mikharkiv/provydets">
+				Vadym Nakytnyak, 2020 | <a href="https://github.com/mikharkiv/provydets" target="_blank" className="link">
 				GitHub page
 			</a>
 			</p>
