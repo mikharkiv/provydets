@@ -1,17 +1,43 @@
+body {
+  font-family: "Oswald", sans-serif;
+}
+
+button {
+  font-family: "Oswald", sans-serif;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(99, 139, 104);
-  color: #ffffff;
+  background-color: #2d3047;
   min-height: 100vh;
+  color: #dbdfac;
+
 }
 
 .App-header {
   text-align: center;
   font-size: calc(40px + 2vmin);
   margin-bottom: 16px;
+  height: 1.5em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.App-footer,
+.App-header {
+  background-color: #5f758e;
+  width: 100%;
+}
+
+.App-footer {
+  text-align: center;
+  color: #000;
 }
 
 .App-body {
@@ -20,10 +46,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.App-footer {
-  text-align: right;
 }
 
 .scoreboard {
@@ -35,15 +57,10 @@
 }
 
 .score {
-  background-color: #303030;
-  font-size: calc(6vmin);
-  font-family: "Courier New";
-  font-weight: 600;
+  font-size: calc(5vmin);
   text-align: center;
   border-radius: 2vmin;
-  padding: 2vmin;
-  width: 40%;
-  box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 .input {
@@ -54,17 +71,18 @@
   justify-content: space-evenly;
 }
 
-.mic, .lyrics {
+.mic,
+.lyrics {
   height: 20vh;
   box-sizing: border-box;
 }
 
 .or {
   font-size: 48px;
-  font-weight: 600;
 }
 
-.listen, .type {
+.listen,
+.type {
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -74,12 +92,40 @@
 .listen-button {
   width: 100%;
   margin: 1rem 0px;
-  font-family: "Courier New";
-  font-weight: 600;
   font-size: calc(14px + 2vmin);
-  color: #fff;
+  color: #dbdfac;
   border: none;
   border-radius: 1vmin;
   background-color: #303030;
   resize: none;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* middle child */
+.button:not(:first-child):not(:last-child) {
+  margin: 0 15px;
+}
+
+.button {
+  background: #A53860;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: calc(3vmin);
+  border-radius: 1vmin;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(241, 245, 242, 0.7);
+  transition: color 0.5s ease-in-out;
+}
+
+.button:active, .button:hover {
+  color: rgba(241, 245, 242, 1);
 }
