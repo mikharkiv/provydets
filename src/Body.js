@@ -12,7 +12,7 @@ function Inputs() {
   return (
     <div className="input">
       <Listen />
-      <div class="or">
+      <div className="or">
         OR
       </div>
       <Type />
