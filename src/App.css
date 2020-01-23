@@ -1,9 +1,15 @@
-body {
+body, button {
   font-family: "Oswald", sans-serif;
 }
 
-button {
-  font-family: "Oswald", sans-serif;
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #A53860;
 }
 
 .App {
@@ -20,7 +26,6 @@ button {
 .App-header {
   text-align: center;
   font-size: calc(40px + 2vmin);
-  margin-bottom: 16px;
   height: 1.5em;
 
   display: flex;
@@ -37,15 +42,28 @@ button {
 
 .App-footer {
   text-align: center;
+  font-size: calc(12px + 1vmin);
   color: #000;
 }
 
+.App-footer > p {
+  margin: 0.75rem 0;
+}
+
 .App-body {
+  width:100%;
+  height:100%;
   flex-grow: 1;
-  width: 80%;
+  margin: 16px ;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-image: url('./back.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-clip: content-box;
 }
 
 .scoreboard {

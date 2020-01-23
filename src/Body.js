@@ -3,7 +3,7 @@ import React from 'react';
 function Body() {
   return (
     <section className="App-body">
-      <Inputs />
+      {/* <Inputs /> HIDDEN TEMPORARILY*/}
     </section>
   );
 }
