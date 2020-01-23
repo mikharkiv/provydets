@@ -1,0 +1,182 @@
+body, button {
+	font-family: "Oswald", sans-serif;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #2d3047;
+	min-height: 100vh;
+	color: #dbdfac;
+	
+}
+.App-header {
+	text-align: center;
+	font-size: calc(40px + 2vmin);
+	height: 1.5em;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+.App-footer,
+.App-header {
+	background-color: #5f758e;
+	width: 100%;
+}
+.App-footer {
+	text-align: center;
+	font-size: calc(12px + 1vmin);
+	color: #000;
+}
+.App-footer > p {
+	margin: 0.75rem 0;
+}
+
+.App-body {
+	width:100%;
+	height:100%;
+	flex-grow: 1;
+	margin: 16px ;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-image: url('../back.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-clip: content-box;
+}
+
+.scoreboard {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-evenly;
+	margin-bottom: 16px;
+}
+.score {
+	font-size: calc(5vmin);
+	text-align: center;
+	border-radius: 2vmin;
+	text-transform: uppercase;
+}
+
+.input {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.mic,
+.lyrics {
+	height: 20vmin;
+	box-sizing: border-box;
+}
+
+.or {
+	font-size: calc(24px + 4vmin);
+}
+
+.listen,
+.type {
+	max-width: 500px;
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.audio-type-selection {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	
+	width: 100%;
+}
+
+.audio-type-selection > button {
+	width: 100%;
+	margin: 1rem;
+}
+
+.textarea {
+	font-family: 'Oswald', sans-serif;
+	font-size: calc(14px + 2vmin);
+	color: rgba(241, 245, 242, 1);
+	border: none;
+	margin: 1rem;
+	border-radius: 1vmin;
+	background-color: #A53860;
+	resize: none;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.textarea::placeholder {
+	color: rgba(241, 245, 242, 0.7);
+}
+
+.button-group {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+/* middle child */
+.button:not(:first-child):not(:last-child) {
+	margin: 0 15px;
+}
+
+.button {
+	background: #A53860;
+	border: none;
+	padding: 0.5rem 1rem;
+	font-size: calc(3vmin);
+	border-radius: 1vmin;
+	text-align: center;
+	text-transform: uppercase;
+	color: rgba(241, 245, 242, 0.6);
+	transition-property: color;
+	transition: color 0.25s ease-in-out;
+}
+
+.button:active, .button:hover {
+	color: rgba(241, 245, 242, 1);
+}
+
+.link {
+	border-bottom: 1px solid #000000;
+	text-decoration: none;
+	color: inherit;
+	transition: color 0.3s;
+}
+
+.link:hover {
+	border-bottom: 1px solid #A53860;
+	color: #A53860;
+}
+
+.link:visited {
+
+}
+
+
+/* Adaptivity */
+/* mobile screens */
+@media screen and (min-width: 420px) {}
+@media screen and (min-width: 576px) {}
+@media screen and (min-width: 680px) {}
+/* desktops, laptops, tablets */
+@media screen and (min-width: 768px) {}
+@media screen and (min-width: 920px) {}
+/* large screens */
+@media screen and (min-width: 1200px) {}
+@media screen and (min-width: 1400px) {}
