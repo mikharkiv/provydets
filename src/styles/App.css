@@ -59,7 +59,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url('./back.svg');
+  background-image: url('../back.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
