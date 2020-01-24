@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
+import 'mic-recorder-to-mp3' ;
 import {requestAudd} from './Logic'
+
+const MicRecorder = require('mic-recorder-to-mp3');
+
+// New instance
+const recorder = new MicRecorder({
+    bitRate: 128
+});
 
 function Body() {
     return (
@@ -21,20 +29,68 @@ function Inputs() {
     )
 }
 
-function Listen() {
-    return (
-        <div className="listen">
-            <img src="./res/mic.svg" alt="" className="mic"></img>
-            <div className="audio-type-selection">
-                <button className="button">
-                    Song
-                </button>
-                <button className="button">
-                    Humming
-                </button>
+class Listen extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isRecording: false
+        };
+        this.record = this.record.bind(this);
+    }
+
+    record() {
+        if (this.state.isRecording) {
+            this.stop()
+            this.setState({isRecording: false})
+        } else {
+            this.start()
+            this.setState({isRecording:true})
+        }
+    }
+
+    start() {
+        console.log("Start recording...");
+        recorder.start().then(() => {
+        }).catch((e) => {
+            console.error(e);
+        });
+    }
+
+    stop() {
+        console.log("Stop recording...\nSending Request...");
+        recorder.stop().getMp3().then(([buffer, blob]) => {
+            const file = new File(buffer, 'voice_sample.mp3', {
+                type: blob.type,
+                lastModified: Date.now()
+            });
+
+            const player = new Audio(URL.createObjectURL(file));
+            player.play()
+
+            requestAudd(file)
+
+        }).catch((e) => {
+            alert('We could not retrieve your message');
+            console.log(e);
+        });
+    }
+
+    render() {
+        return (
+            <div className="listen">
+                <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}></img>
+                <div className="audio-type-selection">
+                    <button className="button">
+                        Song
+                    </button>
+                    <button className="button">
+                        Humming
+                    </button>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 class Type extends React.Component {
