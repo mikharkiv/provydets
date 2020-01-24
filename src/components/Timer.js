@@ -6,25 +6,36 @@ class Timer extends React.Component {
         this.state = {
             sec: 0,
             min: 0,
-            hour: 0
+            hour: 0,
+            isOn: false
         };
     }
 
-    start(){
+    start() {
+        console.log("SHIT")
         this.timerID = setInterval(
             () => this.tick(),
             1000
         );
     }
 
-    pause(){
+    pause() {
         clearInterval(this.timerID);
     }
 
-    componentDidMount() {
-        this.start()
+    clear(){
+        this.setState({
+            sec: 0,
+            min: 0,
+            hour: 0
+        });
     }
 
+    /*
+        componentDidMount() {
+            this.start()
+        }
+*/
     componentWillUnmount() {
         this.pause()
     }
@@ -46,10 +57,23 @@ class Timer extends React.Component {
         });
     }
 
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        if (nextProps.run == true) {
+            if (!nextState.isOn) {
+                this.start()
+                this.setState({isOn: true})
+            }
+        }
+        if (nextProps.run == false && nextState.isOn) {
+            this.setState({isOn: false})
+            this.pause()
+        }
+    }
+
     render() {
-        return(
+        return (
             <div>
-                <h1>{this.state.hour}:{this.state.min}:{this.state.sec}</h1>
+                <h1>{this.state.min}:{this.state.sec}</h1>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'mic-recorder-to-mp3' ;
 import {requestAudd} from './Logic'
+import{Timer} from "./Timer"
 
 const MicRecorder = require('mic-recorder-to-mp3');
 
@@ -85,6 +86,7 @@ class Listen extends React.Component {
                 <p>Press the mic <br/>
                 To start recording</p>
                 <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}></img>
+                <Timer run={this.state.isRecording}></Timer>
                 <div className="audio-type-selection">
                     <button className="button" disabled={this.state.isDisabled}>
                         Song
