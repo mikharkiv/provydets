@@ -62,9 +62,10 @@ p {
 }
 .button-group {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-items: stretch;
 	align-items: stretch;
+	justify-self: flex-end;
 	
 	> .button {
 		margin-bottom: 0.5em;
@@ -104,17 +105,17 @@ p {
 	width: 100%;
 	
 	&--mic {
-		width: 7em;
-		height: 7em;
+		width: 5em;
+		height: 5em;
 		border-radius: 3.5em;
 		background-color: $dark-blue;
 		border: 3px solid $pink;
-		margin-top: 0.5em;
+		margin-top: 0.3em;
 		
 		&__img {
-			width: 5em;
-			height: 5em;
-			margin: 1em;
+			width: 4em;
+			height: 4em;
+			margin: 0.5em;
 		}
 	}
 	&--buttons {
@@ -203,8 +204,8 @@ p {
 	}
 }
 .or {
-	font-size: 2em;
-	line-height: 2em;
+	font-size: 1.5em;
+	line-height: 1.2em;
 	flex-grow: unset;
 	text-align: center;
 }
@@ -267,7 +268,7 @@ p {
 	text-transform: uppercase;
 }
 .p_small {
-	font-size: 1.5vmax;
+	font-size: 0.8em;
 }
 .t_center {
 	text-align: center;
@@ -290,18 +291,34 @@ p {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
-	.lyrics--img {
-		display: block;
-	}
-	.lyrics--textarea {
-		background-image: none;
+	.lyrics {
+		max-height: 70%;
+		&--img {
+			display: block;
+		}
+		&--textarea {
+			background-image: none;
+		}
 	}
 	.App-header > .score {
 		margin-bottom: 0;
 	}
 }
 @media screen and (min-width: 576px) {
-
+	.listen--mic {
+		width: 7em;
+		height: 7em;
+		border-radius: 3.5em;
+		background-color: $dark-blue;
+		border: 3px solid $pink;
+		margin-top: 0.5em;
+		
+		&__img {
+			width: 5em;
+			height: 5em;
+			margin: 1em;
+		}
+	}
 }
 @media screen and (min-width: 680px) {
 	
