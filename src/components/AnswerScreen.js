@@ -3,8 +3,18 @@ import React, {Component} from 'react';
 class AnswerScreen extends Component {
 	constructor(props) {
 		super(props);
+		this.wrongAnswer = this.wrongAnswer.bind(this)
+		this.rightAnswer = this.rightAnswe.bind(this)
 	}
-	
+
+	wrongAnswer(){
+		this.props.callbackFromParent("Body")
+	}
+
+	rightAnswe(){
+		this.props.callbackFromParent("Body")
+	}
+
 	render() {
 		return (
 			<div className="answer_screen">
@@ -22,8 +32,8 @@ class AnswerScreen extends Component {
 						<p className="player__bar--time_passed" id="playerTimePassed">0:10</p>
 						<p className="player__bar--time_left" id="playerTimeLeft">0:20</p>
 					</div>
-					<button className="button" id="answerYesButton">yes, right!</button>
-					<button className="button" id="answerNoButton">no, dummy!</button>
+					<button className="button" id="answerYesButton" onClick={this.rightAnswer}>yes, right!</button>
+					<button className="button" id="answerNoButton" onClick={this.wrongAnswer}>no, dummy!</button>
 				</div>
 			</div>
 		);
