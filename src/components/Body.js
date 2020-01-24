@@ -96,7 +96,7 @@ class Listen extends React.Component {
     render() {
         return (
             <div className="listen">
-                <p className="uppercase p_small t_center">Press the mic<br/>
+                <p className="uppercase t_center">Press the mic<br/>
                 To start recording</p>
                 <div className="listen--mic">
                     <img src="./res/mic.svg" alt="" className="listen--mic__img" onClick={this.record}/>
@@ -114,7 +114,7 @@ class Listen extends React.Component {
                             Humming
                         </button>
                     </div>
-                    <p className="uppercase p_small t_center">click any button to stop recording and submit</p>
+                    <p className="uppercase t_center">click any button to stop recording and submit</p>
                 </div>
             </div>
         )

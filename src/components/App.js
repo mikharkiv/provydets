@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/reset.scss';
 import '../styles/App.scss';
 import Body from './Body';
+import Attempt from './Attempt';
 import Header from './Header';
 import Footer from "./Footer";
 import AnswerScreen from './AnswerScreen';
@@ -19,8 +20,9 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<Body />
-			{/*<AnswerScreen param={answerTestProps} />*/}
+			<Attempt />
+			{/*<Body />*/}
+			<AnswerScreen param={answerTestProps} />
 			<Footer/>
 		</div>
 	);

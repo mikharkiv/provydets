@@ -1,25 +1,5 @@
-$light-blue: #5f758e;
-$dark-blue: #2d3047;
-$beige: #dbdfac;
-$pink: #a53860;
-$black: #000;
-$red: #D40404;
-
-body,
-button,
-input {
-	font-family: "Oswald", sans-serif;
-	font-weight: normal;
-	font-size: 18px;
-}
-h1 {
-	font-size: 2em;
-	text-transform: uppercase;
-}
-p {
-	font-size: 1em;
-	line-height: 1.4em;
-}
+@import "Variables";
+@import "Components";
 
 .App {
 	display: flex;
@@ -27,7 +7,7 @@ p {
 	align-items: center;
 	justify-content: center;
 	background-color: $dark-blue;
-	background-image: url("../back.svg");
+	background-image: url("../media/back.svg");
 	background-position: center;
 	background-size: 80%;
 	background-repeat: repeat-y;
@@ -49,7 +29,7 @@ p {
 	align-items: center;
 	
 	> .score {
-		margin-bottom: 10px;
+		margin-bottom: 6px;
 	}
 }
 .score {
@@ -57,8 +37,6 @@ p {
 	text-align: center;
 	text-transform: uppercase;
 	margin: 0 20px;
-	
-	
 }
 .button-group {
 	display: flex;
@@ -81,8 +59,9 @@ p {
 	font-size: 0.6em;
 	color: $black;
 
-	p {
+	> p {
 		margin: 0.5em 0;
+		color: $black;
 	}
 }
 
@@ -190,7 +169,7 @@ p {
 		color: $beige;
 		resize: none;
 		flex-grow: 1;
-		background-image: url("../lyrics.svg");
+		background-image: url("../media/lyrics.svg");
 		background-size: 40%;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -211,8 +190,6 @@ p {
 }
 .listen,
 .type {
-	//max-width: 500px;
-	//width: 45%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -232,46 +209,6 @@ p {
 	&::placeholder {
 		color: rgba(241, 245, 242, 0.7);
 	}
-}
-.button {
-	background: $pink;
-	border: none;
-	padding: 0.3em 0.5em;
-	font-size: 0.9em;
-	border-radius: 8px;
-	text-align: center;
-	text-transform: uppercase;
-	color: rgba(241, 245, 242, 0.6);
-	transition-property: color;
-	transition: color 0.25s ease-in-out;
-
-	&:hover,
-	&:active {
-		color: rgba(241, 245, 242, 1);
-	}
-}
-
-.link {
-	border-bottom: 1px solid #000000;
-	text-decoration: none;
-	color: inherit;
-	transition: color 0.3s;
-
-	&:hover {
-		border-bottom: 1px solid $pink;
-		color: $pink;
-	}
-
-	&:visited {}
-}
-.uppercase {
-	text-transform: uppercase;
-}
-.p_small {
-	font-size: 0.8em;
-}
-.t_center {
-	text-align: center;
 }
 
 /* Adaptivity */
@@ -320,18 +257,8 @@ p {
 		}
 	}
 }
-@media screen and (min-width: 680px) {
-	
-	body {
-		font-size: 20px;
-	}
-}
 /* desktops, laptops, tablets */
 @media screen and (min-width: 768px) {
-	
-	body {
-		font-size: 22px;
-	}
 	.input {
 		flex-direction: row;
 	}
@@ -350,22 +277,5 @@ p {
 		> button {
 			max-width: unset;
 		}
-	}
-}
-@media screen and (min-width: 920px) {
-	body {
-		font-size: 24px;
-	}
-}
-/* large screens */
-@media screen and (min-width: 1200px) {
-	
-	body {
-		font-size: 28px;
-	}
-}
-@media screen and (min-width: 1400px) {
-	body {
-		font-size: 32px;
 	}
 }
