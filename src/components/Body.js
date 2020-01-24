@@ -36,13 +36,15 @@ class Listen extends React.Component {
         super(props);
         this.state = {
             isRecording: false,
-            isDisabled:true
+            isDisabled:true,
+            voice_sample:null
         };
         this.record = this.record.bind(this);
+        this.songRequest = this.songRequest.bind(this)
+        this.hummingRequest = this.hummingRequest.bind(this)
     }
 
     record() {
-
         if (this.state.isRecording) {
             this.stop()
             this.setState({isRecording: false})
@@ -68,9 +70,10 @@ class Listen extends React.Component {
                 type: blob.type,
                 lastModified: Date.now()
             });
+            this.setState({voice_sample:file})
 
-            const player = new Audio(URL.createObjectURL(file));
-            player.play()
+            //const player = new Audio(URL.createObjectURL(file));
+            //player.play()
 
             //requestAudd(file)
 
@@ -80,18 +83,31 @@ class Listen extends React.Component {
         });
     }
 
+    songRequest(){
+        this.record()
+        requestAudd(this.state.voice_sample)
+    }
+
+    hummingRequest(){
+        this.record()
+        requestAudd(this.state.voice_sample,"recognizeWithOffset")
+    }
+
     render() {
         return (
             <div className="listen">
                 <p>Press the mic <br/>
                 To start recording</p>
-                <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}></img>
-                <Timer run={this.state.isRecording}></Timer>
+                <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}/>
+                <div>
+                    <Timer run={this.state.isRecording}></Timer>
+                </div>
+
                 <div className="audio-type-selection">
-                    <button className="button" disabled={this.state.isDisabled}>
+                    <button className="button" disabled={this.state.isDisabled} onClick={this.songRequest}>
                         Song
                     </button>
-                    <button className="button" disabled={this.state.isDisabled}>
+                    <button className="button" disabled={this.state.isDisabled} onClick={this.hummingRequest}>
                         Humming
                     </button>
                 </div>
