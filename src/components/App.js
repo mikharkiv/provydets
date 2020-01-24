@@ -20,14 +20,12 @@ class App extends React.Component {
 	pointUp = (pointReceiver) => {
 		switch(pointReceiver){
 			case "pc":
-				console.log("Before pc:"+this.state.pc)
-				let pc_points = this.state.pc+1
+				let pc_points = this.state.pc+1;
 				this.setState({pc:pc_points});
 				break
 			case "user":
-				let user = this.state.user+1
-				this.setState({user:user});
-				console.log("Points user:"+this.state.user)
+				let user_points = this.state.user+1
+				this.setState({user:user_points});
 				break
 		}
 	}
