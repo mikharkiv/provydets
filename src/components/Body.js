@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'mic-recorder-to-mp3' ;
 import {requestAudd} from './Logic'
+import {requestDeezer} from "./Logic";
 import {Timer} from "./Timer"
 import AnswerScreen from "./AnswerScreen";
 import ErrorGuessing from "./ErrorGuessing";
@@ -24,12 +25,13 @@ class Body extends React.Component {
 		}
 	}
 
-	myCallback = (dataFromChild, requestData) => {
+	myCallback = (dataFromChild, type, requestData) => {
 		let answerTestProps;
-		if (requestData != undefined && requestData["result"] != undefined) {
-			let artist = requestData["result"]["artist"]
-			let title = requestData["result"]["title"]
-			let preview = requestData["result"]["deezer"]["album"]["cover_big"]
+		console.log(requestData)
+		if (type != null && requestData != undefined) {
+			let artist = requestData["artist"]["name"]
+			let title = requestData["title"]
+			let preview = requestData["album"]["cover_big"]
 			answerTestProps = {
 				attempt: 1,
 				songPreview: preview,
@@ -49,7 +51,8 @@ class Body extends React.Component {
 			:
 				if (answerTestProps != null) {
 					this.setState({
-						component: <AnswerScreen param={answerTestProps} callbackFromParent={this.myCallback} pointUp={this.props.pointUp}/>
+						component: <AnswerScreen param={answerTestProps} callbackFromParent={this.myCallback}
+												 pointUp={this.props.pointUp}/>
 					})
 				} else {
 					this.setState({
@@ -147,7 +150,7 @@ class Listen extends React.Component {
 	}
 
 	resolveRequest(call, data) {
-		call.props.callbackFromParent("AnswerScreen", data)
+		call.props.callbackFromParent("AnswerScreen", "voice", data["result"]["deezer"])
 	}
 
 	songRequest() {
@@ -157,8 +160,7 @@ class Listen extends React.Component {
 
 	hummingRequest() {
 		console.log("Sending humming recognition request...");
-		//requestAudd(this.state.voice_sample,"recognizeWithOffset")
-		this.props.callbackFromParent("AnswerScreen")
+		//requestAudd(this, this.resolveRequest, this.state.voice_sample,"recognizeWithOffset")
 	}
 
 	componentWillUpdate(nextProps, nextState, nextContext) {
@@ -207,11 +209,18 @@ class Type extends React.Component {
 		this.setState({value: event.target.value});
 	}
 
+	deezer(call,data) {
+		//call.props.callbackFromParent("AnswerScreen", "lyrics", data.data[0])
+	}
+
+	resolveRequest(call, data) {
+		requestDeezer(call, call.deezer, data.result[0]["title"], data.result[0]["artist"]);
+	}
+
 	handleSubmit(event) {
-		console.log("Sending humming recognition request...");
-		//requestAudd(null, 'findLyrics', this.state.value);
+		console.log("Sending lyrics recognition request...");
 		event.preventDefault();
-		this.props.callbackFromParent("AnswerScreen")
+		requestAudd(this, this.resolveRequest, null, 'findLyrics', this.state.value);
 	}
 
 	render() {
