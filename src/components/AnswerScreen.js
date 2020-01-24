@@ -4,14 +4,14 @@ class AnswerScreen extends Component {
 	constructor(props) {
 		super(props);
 		this.wrongAnswer = this.wrongAnswer.bind(this)
-		this.rightAnswer = this.rightAnswe.bind(this)
+		this.rightAnswer = this.rightAnswer.bind(this)
 	}
 
 	wrongAnswer(){
 		this.props.callbackFromParent("Body")
 	}
 
-	rightAnswe(){
+	rightAnswer(){
 		this.props.callbackFromParent("Body")
 	}
 
