@@ -28,22 +28,24 @@ button {
 	min-height: 100vh;
 	color: $beige;
 }
-
+.App-footer {
+	left: 0;
+	right: 0;
+}
 .App-footer,
 .App-header {
-  text-align: center;
+	text-align: center;
 	background-color: $light-blue;
 	width: 100%;
 }
 
 .App-footer {
 	font-size: calc(12px + 1vmin);
-  color: $black;
+	color: $black;
 
-  p {
-    margin: 0.75rem 0;
-  }
-
+	p {
+		margin: 0.75rem 0;
+	}
 }
 
 .App-body {
