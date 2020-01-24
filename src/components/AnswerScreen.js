@@ -8,10 +8,12 @@ class AnswerScreen extends Component {
 	}
 
 	wrongAnswer(){
+		this.props.pointUp("user")
 		this.props.callbackFromParent("Inputs")
 	}
 
 	rightAnswer(){
+		this.props.pointUp("pc")
 		this.props.callbackFromParent("Inputs")
 	}
 

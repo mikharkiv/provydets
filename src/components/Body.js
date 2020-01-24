@@ -49,11 +49,11 @@ class Body extends React.Component {
 			:
 				if (answerTestProps != null) {
 					this.setState({
-						component: <AnswerScreen param={answerTestProps} callbackFromParent={this.myCallback}/>
+						component: <AnswerScreen param={answerTestProps} callbackFromParent={this.myCallback} pointUp={this.props.pointUp}/>
 					})
 				} else {
 					this.setState({
-						component: <ErrorGuessing callbackFromParent={this.myCallback}/>
+						component: <ErrorGuessing callbackFromParent={this.myCallback} pointUp={this.props.pointUp}/>
 					})
 				}
 				break

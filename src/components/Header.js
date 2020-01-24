@@ -2,12 +2,12 @@ import React from 'react';
 import Score from './Score';
 import Buttons from './Buttons';
 
-function Header() {
+function Header(props) {
 	return (
 		<header className="App-header">
-			<Score name="pc" score="0" />
+			<Score name="pc" score={props.pc}/>
 			<Buttons />
-			<Score name="user" score="0" />
+			<Score name="user" score={props.user}/>
 		</header>
 	);
 }
