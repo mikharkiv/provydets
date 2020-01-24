@@ -15,12 +15,15 @@ class App extends React.Component{
 		}
 	}
 
-	myCallback = (dataFromChild) => {
+	myCallback = (dataFromChild, requestData) => {
+		let artist = requestData["result"]["artist"]
+		let title = requestData["result"]["title"]
+		let preview = requestData["result"]["deezer"]["album"]["cover_big"]
 		const answerTestProps = {
 			attempt: 1,
-			songPreview: "https://img.discogs.com/dADBPB6TzEoBdGQFKQy-MhHBA_0=/fit-in/388x374/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2027877-1259432078.jpeg.jpg",
-			songTitle: "What a wonderful world",
-			songAuthor: "Louis Armstrong",
+			songPreview: preview,
+			songTitle: title,
+			songAuthor: artist,
 		};
 		switch (dataFromChild) {
 			case
