@@ -49,7 +49,8 @@ class Listen extends React.Component {
         this.state = {
             isRecording: false,
             isDisabled: true,
-            voice_sample: null
+            voice_sample: null,
+            data:null
         };
         this.record = this.record.bind(this);
         this.songRequest = this.songRequest.bind(this)
@@ -99,16 +100,24 @@ class Listen extends React.Component {
         });
     }
 
+    resolveRequest(call,data) {
+        call.props.callbackFromParent("AnswerScreen",data)
+    }
+
     songRequest() {
         console.log("Sending song recognition request...");
-        //requestAudd(this.state.voice_sample)
-        this.props.callbackFromParent("AnswerScreen")
+        let m = this
+        requestAudd(this,this.resolveRequest, this.state.voice_sample)
     }
 
     hummingRequest() {
         console.log("Sending humming recognition request...");
         //requestAudd(this.state.voice_sample,"recognizeWithOffset")
         this.props.callbackFromParent("AnswerScreen")
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+
     }
 
     render() {
