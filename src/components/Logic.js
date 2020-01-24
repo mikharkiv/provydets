@@ -5,7 +5,7 @@ const AUDD_URL = "https://api.audd.io/"
 const KEY_TOKEN = "f540762d9f7dbfa0e9484b2e44f3d237"
 const RETURN_VALUE = "deezer"
 
-function requestAudd(file, method, q) {
+function requestAudd(call,func, file, method, q) {
     let data = new FormData();
     if (file != null)
         data.append("file", file);
@@ -25,7 +25,7 @@ function requestAudd(file, method, q) {
         processData: false,
         method: 'POST',
         success: function (data) {
-           console.table(data);
+            func(call,data)
         }
     })
 }
