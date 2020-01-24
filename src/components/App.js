@@ -20,7 +20,7 @@ function App() {
 		<div className="App">
 			<Header />
 			<Body />
-			<AnswerScreen param={answerTestProps} />
+			{/*<AnswerScreen param={answerTestProps} />*/}
 			<Footer/>
 		</div>
 	);

@@ -6,8 +6,7 @@ class Buttons extends Component {
 		return (
 			<div className="button-group">
 				<Button type="new game" />
-				<Button type="reset scores" />
-				<Button type="buttons" />
+				<Button type="leaderboard" />
 			</div>
 		)
 	}

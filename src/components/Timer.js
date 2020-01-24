@@ -72,8 +72,9 @@ class Timer extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.min}:{this.state.sec}</h1>
+            <div className="timer">
+                <div className="timer--point"></div>
+                <p className="timer--label uppercase">{this.state.min}:{this.state.sec}</p>
             </div>
         )
     }

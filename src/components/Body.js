@@ -96,20 +96,25 @@ class Listen extends React.Component {
     render() {
         return (
             <div className="listen">
-                <p>Press the mic <br/>
+                <p className="uppercase p_small t_center">Press the mic<br/>
                 To start recording</p>
-                <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}/>
+                <div className="listen--mic">
+                    <img src="./res/mic.svg" alt="" className="listen--mic__img" onClick={this.record}/>
+                </div>
                 <div>
                     <Timer run={this.state.isRecording}></Timer>
                 </div>
 
-                <div className="audio-type-selection">
-                    <button className="button" disabled={this.state.isDisabled} onClick={this.songRequest}>
-                        Song
-                    </button>
-                    <button className="button" disabled={this.state.isDisabled} onClick={this.hummingRequest}>
-                        Humming
-                    </button>
+                <div className="listen--buttons">
+                    <div className="listen--buttons--container">
+                        <button className="button" disabled={this.state.isDisabled} onClick={this.songRequest}>
+                            Song
+                        </button>
+                        <button className="button" disabled={this.state.isDisabled} onClick={this.hummingRequest}>
+                            Humming
+                        </button>
+                    </div>
+                    <p className="uppercase p_small t_center">click any button to stop recording and submit</p>
                 </div>
             </div>
         )
@@ -138,12 +143,10 @@ class Type extends React.Component {
 
     render() {
         return (
-            <div className="type">
-                <form onSubmit={this.handleSubmit}>
-                    <img src="./res/lyrics.svg" alt="" className="lyrics"></img>
-                    <textarea className="textarea" rows="2" placeholder="Your lyrics..." onChange={this.handleChange}/>
-                    <input type="submit" value="Submit"/>
-                </form>
+            <div className="lyrics">
+                <img src="./res/lyrics.svg" alt="" className="lyrics--img"></img>
+                <textarea className="lyrics--textarea" rows="2" placeholder="Your lyrics..." onChange={this.handleChange}/>
+                <button className="lyrics--button button">submit</button>
             </div>
         )
     }
