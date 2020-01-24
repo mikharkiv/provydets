@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import 'mic-recorder-to-mp3' ;
 import {requestAudd} from './Logic'
-import{Timer} from "./Timer"
+import {Timer} from "./Timer"
 
 const MicRecorder = require('mic-recorder-to-mp3');
 
@@ -10,24 +10,36 @@ const recorder = new MicRecorder({
     bitRate: 128
 });
 
-function Body() {
-    return (
-        <section className="App-body">
-            <Inputs/>
-        </section>
-    );
+class Body extends React.Component {
+    componentWillUnmount() {
+        console.log("Body")
+    }
+
+    render() {
+        return (
+            <section className="App-body">
+                <Inputs callbackFromParent={this.props.callbackFromParent}/>
+            </section>
+        );
+    }
 }
 
-function Inputs() {
-    return (
-        <div className="input">
-            <Listen/>
-            <div className="or">
-                OR
+class Inputs extends React.Component {
+    componentWillUnmount() {
+        console.log("Inputs")
+    }
+
+    render() {
+        return (
+            <div className="input">
+                <Listen callbackFromParent={this.props.callbackFromParent}/>
+                <div className="or">
+                    OR
+                </div>
+                <Type callbackFromParent={this.props.callbackFromParent}/>
             </div>
-            <Type/>
-        </div>
-    )
+        )
+    }
 }
 
 class Listen extends React.Component {
@@ -36,22 +48,26 @@ class Listen extends React.Component {
         super(props);
         this.state = {
             isRecording: false,
-            isDisabled:true,
-            voice_sample:null
+            isDisabled: true,
+            voice_sample: null
         };
         this.record = this.record.bind(this);
         this.songRequest = this.songRequest.bind(this)
         this.hummingRequest = this.hummingRequest.bind(this)
     }
 
+    componentWillUnmount() {
+        console.log("Listen")
+    }
+
     record() {
         if (this.state.isRecording) {
             this.stop()
+            this.setState({isDisabled: false})
             this.setState({isRecording: false})
         } else {
-            this.setState({isDisabled:false})
             this.start()
-            this.setState({isRecording:true})
+            this.setState({isRecording: true})
         }
     }
 
@@ -64,13 +80,13 @@ class Listen extends React.Component {
     }
 
     stop() {
-        console.log("Stop recording...\nSending Request...");
+        console.log("Stop recording...");
         recorder.stop().getMp3().then(([buffer, blob]) => {
             const file = new File(buffer, 'voice_sample.mp3', {
                 type: blob.type,
                 lastModified: Date.now()
             });
-            this.setState({voice_sample:file})
+            this.setState({voice_sample: file})
 
             //const player = new Audio(URL.createObjectURL(file));
             //player.play()
@@ -83,21 +99,23 @@ class Listen extends React.Component {
         });
     }
 
-    songRequest(){
-        this.record()
-        requestAudd(this.state.voice_sample)
+    songRequest() {
+        console.log("Sending song recognition request...");
+        //requestAudd(this.state.voice_sample)
+        this.props.callbackFromParent("AnswerScreen")
     }
 
-    hummingRequest(){
-        this.record()
-        requestAudd(this.state.voice_sample,"recognizeWithOffset")
+    hummingRequest() {
+        console.log("Sending humming recognition request...");
+        //requestAudd(this.state.voice_sample,"recognizeWithOffset")
+        this.props.callbackFromParent("AnswerScreen")
     }
 
     render() {
         return (
             <div className="listen">
                 <p>Press the mic <br/>
-                To start recording</p>
+                    To start recording</p>
                 <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}/>
                 <div>
                     <Timer run={this.state.isRecording}></Timer>
@@ -127,13 +145,19 @@ class Type extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount() {
+        console.log("Type")
+    }
+
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
     handleSubmit(event) {
-        requestAudd(null, 'findLyrics', this.state.value);
+        console.log("Sending humming recognition request...");
+        //requestAudd(null, 'findLyrics', this.state.value);
         event.preventDefault();
+        this.props.callbackFromParent("AnswerScreen")
     }
 
     render() {
