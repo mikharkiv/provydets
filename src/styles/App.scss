@@ -1,5 +1,22 @@
-body, button {
+$light-blue: #5f758e;
+$dark-blue: #2d3047;
+$beige: #dbdfac;
+$pink: #a53860;
+$black: #000;
+
+body,
+button {
 	font-family: "Oswald", sans-serif;
+}
+
+.App-header {
+	font-size: calc(40px + 2vmin);
+	height: 1.5em;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .App {
@@ -7,62 +24,47 @@ body, button {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: #2d3047;
+	background-color: $dark-blue;
 	min-height: 100vh;
-	color: #dbdfac;
-	
+	color: $beige;
 }
-.App-header {
-	text-align: center;
-	font-size: calc(40px + 2vmin);
-	height: 1.5em;
-	
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-}
+
 .App-footer,
 .App-header {
-	background-color: #5f758e;
+  text-align: center;
+	background-color: $light-blue;
 	width: 100%;
 }
+
 .App-footer {
-	text-align: center;
 	font-size: calc(12px + 1vmin);
-	color: #000;
-}
-.App-footer > p {
-	margin: 0.75rem 0;
+  color: $black;
+
+  p {
+    margin: 0.75rem 0;
+  }
+
 }
 
 .App-body {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 	flex-grow: 1;
-	margin: 16px ;
-	
+	margin: 16px;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-image: url('../back.svg');
+	background-image: url("../back.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
 	background-clip: content-box;
 }
 
-.scoreboard {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-evenly;
-	margin-bottom: 16px;
-}
 .score {
 	font-size: calc(5vmin);
 	text-align: center;
-	border-radius: 2vmin;
 	text-transform: uppercase;
 }
 
@@ -97,30 +99,29 @@ body, button {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	
-	width: 100%;
-}
 
-.audio-type-selection > button {
 	width: 100%;
-	margin: 1rem;
+	button {
+		width: 100%;
+		margin: 1rem;
+	}
 }
 
 .textarea {
-	font-family: 'Oswald', sans-serif;
+	font-family: "Oswald", sans-serif;
 	font-size: calc(14px + 2vmin);
 	color: rgba(241, 245, 242, 1);
 	border: none;
 	margin: 1rem;
 	border-radius: 1vmin;
-	background-color: #A53860;
+	background-color: $pink;
 	resize: none;
 	width: 100%;
 	box-sizing: border-box;
-}
 
-.textarea::placeholder {
-	color: rgba(241, 245, 242, 0.7);
+	&::placeholder {
+		color: rgba(241, 245, 242, 0.7);
+	}
 }
 
 .button-group {
@@ -130,13 +131,8 @@ body, button {
 	align-items: center;
 }
 
-/* middle child */
-.button:not(:first-child):not(:last-child) {
-	margin: 0 15px;
-}
-
 .button {
-	background: #A53860;
+	background: $pink;
 	border: none;
 	padding: 0.5rem 1rem;
 	font-size: calc(3vmin);
@@ -146,10 +142,16 @@ body, button {
 	color: rgba(241, 245, 242, 0.6);
 	transition-property: color;
 	transition: color 0.25s ease-in-out;
-}
 
-.button:active, .button:hover {
-	color: rgba(241, 245, 242, 1);
+	&:hover,
+	&:active {
+		color: rgba(241, 245, 242, 1);
+	}
+
+	/* middle child */
+	&:not(:first-child):not(:last-child) {
+		margin: 0 15px;
+	}
 }
 
 .link {
@@ -157,26 +159,31 @@ body, button {
 	text-decoration: none;
 	color: inherit;
 	transition: color 0.3s;
+
+	&:hover {
+		border-bottom: 1px solid $pink;
+		color: $pink;
+	}
+
+	&:visited {
+	}
 }
-
-.link:hover {
-	border-bottom: 1px solid #A53860;
-	color: #A53860;
-}
-
-.link:visited {
-
-}
-
 
 /* Adaptivity */
 /* mobile screens */
-@media screen and (min-width: 420px) {}
-@media screen and (min-width: 576px) {}
-@media screen and (min-width: 680px) {}
+@media screen and (min-width: 420px) {
+}
+@media screen and (min-width: 576px) {
+}
+@media screen and (min-width: 680px) {
+}
 /* desktops, laptops, tablets */
-@media screen and (min-width: 768px) {}
-@media screen and (min-width: 920px) {}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 920px) {
+}
 /* large screens */
-@media screen and (min-width: 1200px) {}
-@media screen and (min-width: 1400px) {}
+@media screen and (min-width: 1200px) {
+}
+@media screen and (min-width: 1400px) {
+}
