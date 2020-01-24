@@ -8,11 +8,11 @@ class AnswerScreen extends Component {
 	}
 
 	wrongAnswer(){
-		this.props.callbackFromParent("Body")
+		this.props.callbackFromParent("Inputs")
 	}
 
 	rightAnswer(){
-		this.props.callbackFromParent("Body")
+		this.props.callbackFromParent("Inputs")
 	}
 
 	render() {
