@@ -34,16 +34,19 @@ class Listen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isRecording: false
+            isRecording: false,
+            isDisabled:true
         };
         this.record = this.record.bind(this);
     }
 
     record() {
+
         if (this.state.isRecording) {
             this.stop()
             this.setState({isRecording: false})
         } else {
+            this.setState({isDisabled:false})
             this.start()
             this.setState({isRecording:true})
         }
@@ -68,7 +71,7 @@ class Listen extends React.Component {
             const player = new Audio(URL.createObjectURL(file));
             player.play()
 
-            requestAudd(file)
+            //requestAudd(file)
 
         }).catch((e) => {
             alert('We could not retrieve your message');
@@ -79,12 +82,14 @@ class Listen extends React.Component {
     render() {
         return (
             <div className="listen">
+                <p>Press the mic <br/>
+                To start recording</p>
                 <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}></img>
                 <div className="audio-type-selection">
-                    <button className="button">
+                    <button className="button" disabled={this.state.isDisabled}>
                         Song
                     </button>
-                    <button className="button">
+                    <button className="button" disabled={this.state.isDisabled}>
                         Humming
                     </button>
                 </div>
