@@ -172,10 +172,8 @@ class Type extends React.Component {
 
 	resolveAuddRequest(call, data) {
 		console.log(data)
-		if (data === undefined)
+		if (data === undefined || data["status"] === "error")
 			call.props.callbackFromParent("AnswerScreen", null)
-		if (data["status"] === "error")
-			call.props.callbackFromParent("ErrorScreen", data["error"])
 
 		requestDeezer(call, call.resolveDeezerRequest, data.result[0]["title"], data.result[0]["artist"]);
 	}
