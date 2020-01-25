@@ -74,26 +74,27 @@ class Listen extends React.Component {
 		});
 	}
 
-	resolveRequest(call, data) {
+	resolveSongRequest(call, data) {
 		if (data.result == undefined) call.props.callbackFromParent("AnswerScreen", null)
-		else
-			call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
+		if (data["status"] === "error")
+			call.props.callbackFromParent("ErrorScreen", data["error"])
+		//call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
 	}
 
 	songRequest() {
 		console.log("Sending song recognition request...");
-		requestAudd(this, this.resolveRequest, this.state.voice_sample)
+		requestAudd(this, this.resolveSongRequest, this.state.voice_sample)
 	}
 
-	deezer(call, data) {
+	resolveDeezerRequest(call, data) {
 		call.props.callbackFromParent("AnswerScreen", data.data[0])
 	}
 
 	resolveHummingRequest(call, data) {
-		if (data.result === undefined) {
-			call.props.callbackFromParent("AnswerScreen", null)
-		} else
-			requestDeezer(call, call.deezer, data.result.list[0]["title"], data.result.list[0]["artist"]);
+		if (data.result === undefined) call.props.callbackFromParent("AnswerScreen", null)
+		if (data["status"] === "error")
+			call.props.callbackFromParent("ErrorScreen", data["error"])
+		//requestDeezer(call, call.resolveDeezerRequest, data.result.list[0]["title"], data.result.list[0]["artist"]);
 	}
 
 	hummingRequest() {
@@ -135,36 +136,35 @@ class Type extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	componentWillUnmount() {
-		console.log("Type")
-	}
-
 	handleChange(event) {
 		this.setState({value: event.target.value});
 	}
 
-	deezer(call, data) {
+	resolveDeezerRequest(call, data) {
 		call.props.callbackFromParent("AnswerScreen", data.data[0])
 	}
 
-	resolveRequest(call, data) {
-		if (data.result === undefined) {
+	resolveAuddRequest(call, data) {
+		console.log(data)
+		if (data === undefined)
 			call.props.callbackFromParent("AnswerScreen", null)
-		} else
-			requestDeezer(call, call.deezer, data.result[0]["title"], data.result[0]["artist"]);
+		if (data["status"] === "error")
+			call.props.callbackFromParent("ErrorScreen", data["error"])
+
+		//requestDeezer(call, call.resolveDeezerRequest, data.result[0]["title"], data.result[0]["artist"]);
 	}
 
 	handleSubmit(event) {
 		console.log("Sending lyrics recognition request...");
 		event.preventDefault();
-		requestAudd(this, this.resolveRequest, null, 'findLyrics', this.state.value);
+		requestAudd(this, this.resolveAuddRequest, null, 'findLyrics', this.state.value);
 	}
 
 	render() {
 		return (
 			<div className="type">
 				<form onSubmit={this.handleSubmit}>
-					<img src="./res/lyrics.svg" alt="" className="lyrics"></img>
+					<img src="./res/lyrics.svg" alt="" className="lyrics"/>
 					<textarea className="textarea" rows="2" placeholder="Your lyrics..." onChange={this.handleChange}/>
 					<input type="submit" value="Submit"/>
 				</form>
