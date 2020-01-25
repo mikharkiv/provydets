@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../styles/ErrorGuessing.scss';
 
 class ErrorGuessing extends Component {
 	constructor(props) {
@@ -12,10 +13,14 @@ class ErrorGuessing extends Component {
 
 	render() {
 		return (
-			<div className="error window">
-				<p className="error--label uppercase">i can't guess your song.<br/>can we try again?</p>
-				<button className="error--yesbtn button" onClick={this.yesButt}>yes</button>
-				<button className="error--nobtn button">no</button>
+			<div className="error_guessing_container">
+				<div className="error_guessing window">
+					<p className="error_guessing--label t_center uppercase">i can't guess your song.<br/>can we try again?</p>
+					<div className="error_guessing--buttons">
+						<button className="error_guessing--buttons--yesbtn button" onClick={this.yesButt}>yes</button>
+						<button className="error_guessing--buttons--nobtn button">no</button>
+					</div>
+				</div>
 			</div>
 		);
 	}
