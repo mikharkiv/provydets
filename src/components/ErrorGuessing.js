@@ -18,8 +18,7 @@ class ErrorGuessing extends Component {
 				<div className="error_guessing window">
 					<p className="error_guessing--label t_center uppercase">i can't guess your song.<br/>can we try again?</p>
 					<div className="error_guessing--buttons">
-						<button className="error_guessing--buttons--yesbtn button" onClick={this.yesButt}>yes</button>
-						<button className="error_guessing--buttons--nobtn button">no</button>
+						<button className="error_guessing--buttons--yesbtn button" onClick={this.yesButt}>try again</button>
 					</div>
 				</div>
 			</div>

@@ -68,7 +68,6 @@ class Buttons extends Component {
 					</div>
 				</Modal>
 				<Button type="new game" onClick={this.clickNewGameButton} />
-				<Button type="leaderboard" />
 			</div>
 		)
 	}
