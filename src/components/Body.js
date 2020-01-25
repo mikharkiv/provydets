@@ -3,13 +3,15 @@ import AnswerScreen from "./AnswerScreen";
 import ErrorGuessing from "./ErrorGuessing";
 import {Inputs} from "./Inputs";
 import {ErrorScreen} from "./ErrorScreen";
+import WinScreen from "./WinScreen";
 
 class Body extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			component: <Inputs callbackFromParent={this.myCallback}/>
+			component: <Inputs callbackFromParent={this.myCallback}/>,
+			songsList:[]
 		}
 	}
 
@@ -18,16 +20,20 @@ class Body extends React.Component {
 		console.log(requestData)
 		let answerTestProps;
 		//console.log(requestData)
-		if (requestData != undefined && requestData["artist"] != undefined) {
+		if (dataFromChild === "AnswerScreen" && requestData != undefined && requestData["artist"] != undefined) {
+
 			let artist = requestData["artist"]["name"]
 			let title = requestData["title"]
 			let preview = requestData["album"]["cover_big"]
 			answerTestProps = {
-				attempt: 1,
+				attempt: this.state.attempt,
 				songPreview: preview,
 				songTitle: title,
 				songAuthor: artist,
 			};
+
+			this.state.songsList.push(requestData)
+			console.table(this.state.songsList)
 		}
 
 		switch (dataFromChild) {
@@ -42,7 +48,7 @@ class Body extends React.Component {
 				if (answerTestProps != null) {
 					this.setState({
 						component: <AnswerScreen param={answerTestProps} callbackFromParent={this.myCallback}
-												 pointUp={this.props.pointUp}/>
+												 pointUp={this.props.pointUp} song={requestData}/>
 					})
 				} else {
 					this.setState({
@@ -54,6 +60,13 @@ class Body extends React.Component {
 			:
 				this.setState({
 					component: <ErrorScreen callbackFromParent={this.myCallback} error={requestData}/>
+				})
+				break
+			case "WinScreen" :
+				console.table(requestData)
+				console.table('win screen')
+				this.setState({
+					component: <WinScreen callbackFromParent={this.myCallback} winner_song={requestData} songs={this.state.songsList} won={true} winner="User" attempt={this.props.attempt}/>
 				})
 				break
 		}
