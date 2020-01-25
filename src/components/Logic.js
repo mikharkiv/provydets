@@ -4,7 +4,7 @@ import $ from 'jquery';
 const AUDD_URL = "https://api.audd.io/"
 const DEEZER_URL = "https://api.deezer.com/search/"
 const PROXY = 'https://cors-anywhere.herokuapp.com/'
-const KEY_TOKEN = "f540762d9f7dbfa0e9484b2e44f3d237"
+const KEY_TOKEN = "5149759466030dc9d9ba9c124b0e757b"
 const RETURN_VALUE = "deezer"
 
 function requestAudd(call, func, file, method, q) {
