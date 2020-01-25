@@ -4,7 +4,6 @@ import ErrorGuessing from "./ErrorGuessing";
 import WinScreen from './WinScreen';
 import {Inputs} from "./Inputs";
 import {ErrorScreen} from "./ErrorScreen";
-import WinScreen from "./WinScreen";
 
 // TODO: FOR TEST
 const answerTestProps = {
@@ -97,41 +96,7 @@ class Body extends React.Component {
 			</section>
 		);
 	}
-//     render() {
-//         return (
-//             <div className="listen">
-//                 <p className="uppercase t_center">Press the mic<br/>
-//                 To start recording</p>
-//                 <div className="listen--mic">
-//                     <img src="./res/mic.svg" alt="" className="listen--mic__img" onClick={this.record}/>
-//                 </div>
-//                 <div>
-//                     <Timer run={this.state.isRecording}></Timer>
-//                 </div>
 
-//                 <div className="listen--buttons">
-//                     <div className="listen--buttons--container">
-//                         <button className="button" disabled={this.state.isDisabled} onClick={this.songRequest}>
-//                             Song
-//                         </button>
-//                         <button className="button" disabled={this.state.isDisabled} onClick={this.hummingRequest}>
-//                             Humming
-//                         </button>
-//                     </div>
-//                     <p className="uppercase t_center">click any button to stop recording and submit</p>
-//                 </div>
-//             </div>
-//         )
-//     }
-//     render() {
-//         return (
-//             <div className="lyrics">
-//                 <img src="./res/lyrics.svg" alt="" className="lyrics--img"></img>
-//                 <textarea className="lyrics--textarea" rows="2" placeholder="Your lyrics..." onChange={this.handleChange}/>
-//                 <button className="lyrics--button button">submit</button>
-//             </div>
-//         )
-//     }
 }
 
 export default Body;  
