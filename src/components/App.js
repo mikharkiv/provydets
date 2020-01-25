@@ -10,14 +10,29 @@ import SongPreview from './SongPreview';
 import WinScreen from './WinScreen';
 
 class App extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {
-			pc:0,
-			user:0,
-			attempt:1
+			pc: 0,
+			user: 0,
+			attempt: 1
 		}
+	}
+
+	newGameCallback = () => {
+		this.child.myCallback("Inputs", "new game")
+	}
+
+	attemptUp = () => {
+		let at = this.state.attempt + 1;
+		if (at === 6) {
+			this.child.myCallback("WinScreen", "User")
+		}
+		else {
+			this.setState({ attempt: at })
+		}
+
 	}
 
 	pointUp = (pointReceiver) => {
@@ -27,9 +42,8 @@ class App extends React.Component {
 				this.setState({ pc: pc_points });
 				break
 			case "user":
-				let user_points = this.state.user+1
-				this.setState({user:user_points});
-				this.setState({attempt:(this.state.attempt+1)});
+				let user_points = this.state.user + 1
+				this.setState({ user: user_points });
 				break
 		}
 	}
@@ -37,9 +51,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<Header pc={this.state.pc} user={this.state.user}/>
-				<Body pointUp={this.pointUp} attempt={this.state.attempt}/>
-				<Footer/>
+				<Header newGameCallback={this.newGameCallback} pc={this.state.pc} user={this.state.user} />
+				<Attempt attempt={this.state.attempt} />
+				<Body attemptUp={this.attemptUp} onRef={ref => (this.child = ref)} pointUp={this.pointUp} attempt={this.state.attempt} />
+				<Footer />
 			</div>
 		);
 	}

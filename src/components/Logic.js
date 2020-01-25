@@ -34,20 +34,23 @@ function requestAudd(call, func, file, method, q) {
 }
 
 function requestDeezer(call, func, title, artist) {
-	console.log((PROXY + DEEZER_URL + 'track?q=' + title+' '+artist).replace(/\s/g,"%20"))
+	console.log((PROXY + DEEZER_URL + 'track?q=' + title + ' ' + artist).replace(/\s/g, "%20"))
 	$.ajax({
-		url: (PROXY + DEEZER_URL + 'track?q=' + title+' '+artist).replace(/\s/g,"%20"),
+		url: (PROXY + DEEZER_URL + 'track?q=' + title + ' ' + artist).replace(/\s/g, "%20"),
 		data: 0,
 		cache: false,
 		contentType: false,
 		processData: false,
+		xhrFields: {
+			withCredentials: false
+		},
 		method: 'GET',
 		success: function (data) {
 			console.table(data)
-			func(call,data)
+			func(call, data)
 		}
 	})
 }
 
-export {requestAudd}
-export {requestDeezer}
+export { requestAudd }
+export { requestDeezer }

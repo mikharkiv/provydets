@@ -11,9 +11,9 @@ class AnswerScreen extends Component {
 		this.rightAnswer = this.rightAnswer.bind(this)
 	}
 
-	wrongAnswer() {
-		this.props.pointUp("user")
+	wrongAnswer(){
 		this.props.callbackFromParent("Inputs")
+		this.props.attemptUp()
 	}
 
 	rightAnswer() {
