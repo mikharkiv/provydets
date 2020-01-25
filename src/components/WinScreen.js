@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SongPreview from "./SongPreview";
 import "../styles/WinScreen.scss";
+import "../styles/SongPreview.scss";
 
 class WinScreen extends Component {
 	
