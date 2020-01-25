@@ -106,13 +106,9 @@ class Listen extends React.Component {
 	}
 
 	resolveSongRequest(call, data) {
-		if (data.result == undefined) call.props.callbackFromParent("AnswerScreen", null)
-		if (data["status"] === "error")
+		if (data.result === null) call.props.callbackFromParent("AnswerScreen", null)
+		else if (data["status"] === "error")
 			call.props.callbackFromParent("ErrorScreen", data["error"])
-		else if (data["result"] === null)
-			call.props.callbackFromParent("ErrorScreen", {
-				"error": "no songs found"
-			})
 		else
 			call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
 	}
@@ -122,13 +118,9 @@ class Listen extends React.Component {
 	}
 
 	resolveHummingRequest(call, data) {
-		if (data.result === undefined) call.props.callbackFromParent("AnswerScreen", null)
-		if (data["status"] === "error")
+		if (data.result === null) call.props.callbackFromParent("AnswerScreen", null)
+		else if (data["status"] === "error")
 			call.props.callbackFromParent("ErrorScreen", data["error"])
-		else if (data["result"] === null)
-			call.props.callbackFromParent("ErrorScreen", {
-				"error": "no songs found"
-			})
 		else
 			requestDeezer(call, call.resolveDeezerRequest, data.result.list[0]["title"], data.result.list[0]["artist"]);
 	}
