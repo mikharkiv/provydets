@@ -9,9 +9,9 @@ class Header extends React.Component {
 	render() {
 		return (
 			<header className="App-header">
-				<Score name="pc" score={0}/>
+				<Score name="pc" score={this.props.pc}/>
 				<Buttons/>
-				<Score name="user" score={0}/>
+				<Score name="user" score={this.props.user}/>
 			</header>
 		);
 	}
