@@ -9,10 +9,10 @@ class SongPreview extends Component {
 		return (
 			<div className="song_preview">
 				<div className="song_preview--image">
-					<img className="song_preview--image--img" src={ this.props.song.songPreview } alt={ this.props.song.songTitle }/>
+					<img className="song_preview--image--img" src={ this.props.songData.album.cover_medium } alt={ this.props.songData.title }/>
 				</div>
-				<p className="song_preview--song_title">{ this.props.song.songTitle }</p>
-				<p className="song_preview--song_author">{ this.props.song.songAuthor }</p>
+				<p className="song_preview--song_title">{ this.props.songData.title }</p>
+				<p className="song_preview--song_author">{ this.props.songData.artist.name }</p>
 			</div>
 		);
 	}
