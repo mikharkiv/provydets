@@ -4,8 +4,20 @@ import '../styles/AnswerScreen.scss'
 class AnswerScreen extends Component {
 	constructor(props) {
 		super(props);
+		this.wrongAnswer = this.wrongAnswer.bind(this)
+		this.rightAnswer = this.rightAnswer.bind(this)
 	}
-	
+
+	wrongAnswer(){
+		this.props.pointUp("user")
+		this.props.callbackFromParent("Inputs")
+	}
+
+	rightAnswer(){
+		this.props.pointUp("pc")
+		this.props.callbackFromParent("Inputs")
+	}
+
 	render() {
 		return (
 			<div className="answer_screen">

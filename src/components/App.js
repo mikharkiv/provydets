@@ -9,8 +9,28 @@ import AnswerScreen from './AnswerScreen';
 import SongPreview from './SongPreview';
 import WinScreen from './WinScreen';
 
-function App() {
-	// TODO: FOR TEST
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			pc:0,
+			user:0
+		}
+	}
+
+	pointUp = (pointReceiver) => {
+		switch(pointReceiver){
+			case "pc":
+				let pc_points = this.state.pc+1;
+				this.setState({pc:pc_points});
+				break
+			case "user":
+				let user_points = this.state.user+1
+				this.setState({user:user_points});
+				break
+		}
+	}
+  	// TODO: FOR TEST
 	const answerTestProps = {
 		attempt: 1,
 		songPreview: "https://img.discogs.com/dADBPB6TzEoBdGQFKQy-MhHBA_0=/fit-in/388x374/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2027877-1259432078.jpeg.jpg",
@@ -25,6 +45,7 @@ function App() {
 		answerTestProps
 	];
 	
+  render() {
 	return (
 		<div className="App">
 			<Header />
@@ -36,6 +57,7 @@ function App() {
 			<Footer/>
 		</div>
 	);
+  }
 }
 
 export default App;
