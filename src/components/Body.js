@@ -4,6 +4,7 @@ import ErrorGuessing from "./ErrorGuessing";
 import WinScreen from './WinScreen';
 import {Inputs} from "./Inputs";
 import {ErrorScreen} from "./ErrorScreen";
+import StartLabel from './StartLabel';
 
 // TODO: FOR TEST
 const answerTestProps = {
@@ -27,6 +28,8 @@ class Body extends React.Component {
 		super(props);
 		this.state = {
 			component: <Inputs callbackFromParent={this.myCallback}/>,
+			// for test
+			// component: <StartLabel/>,
 			songsList:[]
 		}
 	}

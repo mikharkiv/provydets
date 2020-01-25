@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Button from './Button';
 import Modal from 'react-modal'
+import "../styles/Components.scss"
 
 const customStyles = {
 	content : {

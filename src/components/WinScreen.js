@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SongPreview from "./SongPreview";
 import "../styles/WinScreen.scss";
+import "../styles/SongPreview.scss";
 
 class WinScreen extends Component {
 	
@@ -20,6 +21,7 @@ class WinScreen extends Component {
 				<div className="win_screen--correct_song window">
 					<SongPreview songData={ this.props.winner_song } />
 				</div>
+				<p>songs offered:</p>
 				<div className="win_screen--songs_list window scrollable">
 					{ listSongs }
 				</div>

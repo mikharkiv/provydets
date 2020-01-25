@@ -24,20 +24,45 @@
 	}
 	
 	&--songs_list {
+		height: 20vh;
 		width: 18em;
 		max-width: calc(100% - 2em);
 		margin-bottom: 0.5em;
 		height: min-content;
-		overflow: scroll;
+		overflow-y: scroll;
 		
 		> .song_preview {
 			margin-top: 0.1em;
-			margin-left: 0.3em;
-			margin-bottom: 0.25em;
+			margin-left: 0.1em;
+			margin-bottom: 0.4em;
 		}
+	}
+	> p {
+		text-transform: uppercase;
+		margin: 0 0 0.4em 0;
 	}
 }
 
 .window {
 	padding: 0.3em;
 }
+
+/* Adaptivity */
+/* mobile screens */
+@media screen and (min-width: 420px) {
+	.win_screen--songs_list {
+		height: 26vh;
+	}
+}
+@media screen and (min-width: 576px) {}
+@media screen and (min-width: 680px) {
+	.win_screen--songs_list {
+		height: 34vh;
+	}
+}
+/* desktops, laptops, tablets */
+@media screen and (min-width: 768px) {}
+@media screen and (min-width: 920px) {}
+/* large screens */
+@media screen and (min-width: 1200px) {}
+@media screen and (min-width: 1400px) {}

@@ -1,3 +1,5 @@
+@import "Variables";
+
 body,
 button,
 input {
@@ -61,6 +63,26 @@ p {
 	
 	&:visited {}
 }
+
+// react modal overlay
+.ReactModal__Overlay--after-open {
+	background-color: rgba($dark-blue, 0.9)!important;
+}
+.ReactModal__Content--after-open {
+	padding: 0.5em!important;
+	background-color: $dark-blue!important;
+	border: 3px solid $light-blue!important;
+	border-radius: 10px!important;
+	
+	> .button-group {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: center;
+		margin-top: 0.5em;
+	}
+}
+
+
 .uppercase {
 	text-transform: uppercase;
 }

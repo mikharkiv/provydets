@@ -12,8 +12,10 @@ class SongPreview extends Component {
 				<div className="song_preview--image">
 					<img className="song_preview--image--img" src={ this.props.songData.album.cover_medium } alt={ this.props.songData.title }/>
 				</div>
-				<p className="song_preview--song_title">{ this.props.songData.title }</p>
-				<p className="song_preview--song_author">{ this.props.songData.artist.name }</p>
+				<div className="song_preview--title_container">
+					<p className="song_preview--song_title">{ this.props.songData.title }</p>
+					<p className="song_preview--song_author">{ this.props.songData.artist.name }</p>
+				</div>
 			</div>
 		);
 	}

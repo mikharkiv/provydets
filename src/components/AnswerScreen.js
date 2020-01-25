@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/AnswerScreen.scss'
+import GreenAudioPlayer from "green-audio-player/src/js/main";
+import "../styles/green-audio-player.scss";
 
 class AnswerScreen extends Component {
 	constructor(props) {
@@ -30,13 +32,13 @@ class AnswerScreen extends Component {
 					<p className="t_center player--author">{this.props.param.songAuthor}</p>
 					<p className="t_center player--title">{this.props.param.songTitle}</p>
 					<div className="player--play_button"></div>
-					<div className="player__bar" id="playerBar">
+					<div className="player--audio" id="playerBar">
 						<audio
-							controls
+							crossOrigin="true"
 							src={this.props.song.preview}>
 							Your browser does not support the
-            	<code>audio</code> element.
-    				</audio>
+							<code>audio</code> element.
+    				    </audio>
 					</div>
 					<div className="player--buttons">
 						<button className="button" id="answerYesButton" onClick={this.rightAnswer}>yes, right!</button>
@@ -45,6 +47,10 @@ class AnswerScreen extends Component {
 				</div>
 			</div>
 		);
+	}
+	
+	componentDidMount() {
+		new GreenAudioPlayer('.player--audio');
 	}
 }
 
