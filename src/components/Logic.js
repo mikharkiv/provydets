@@ -35,7 +35,7 @@ function requestAudd(call, func, file, method, q) {
 
 function requestDeezer(call, func, title, artist) {
 	$.ajax({
-		url: DEEZER_URL + 'track?q=' + title,
+		url: PROXY + DEEZER_URL + 'track?q=' + title,
 		data: null,
 		cache: false,
 		contentType: false,
