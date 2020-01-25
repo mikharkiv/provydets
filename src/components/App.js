@@ -22,6 +22,9 @@ class App extends React.Component {
 
 	newGameCallback = () => {
 		this.child.myCallback("Inputs", "new game")
+		this.setState({
+			attempt: 1
+		})
 	}
 
 	attemptUp = () => {
