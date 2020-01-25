@@ -6,7 +6,6 @@ import "../styles/green-audio-player.scss";
 class AnswerScreen extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props)
 		this.wrongAnswer = this.wrongAnswer.bind(this)
 		this.rightAnswer = this.rightAnswer.bind(this)
 	}
