@@ -35,8 +35,8 @@ class AnswerScreen extends Component {
 						<p className="player__bar--time_left" id="playerTimeLeft">0:20</p>
 					</div>
 					<div className="player--buttons">
-						<button className="button" id="answerYesButton">yes, right!</button>
-						<button className="button" id="answerNoButton">no, dummy!</button>
+						<button className="button" id="answerYesButton" onClick={this.rightAnswer}>yes, right!</button>
+						<button className="button" id="answerNoButton" onClick={this.wrongAnswer}>no, dummy!</button>
 					</div>
 				</div>
 			</div>
