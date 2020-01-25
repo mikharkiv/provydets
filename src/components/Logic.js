@@ -33,6 +33,7 @@ function requestAudd(call, func, file, method, q) {
 }
 
 function requestDeezer(call, func, title, artist) {
+
 	$.ajax({
 		url: (PROXY + DEEZER_URL
 			//  + 'track?q=' + 'title:"' + title + '" artist:"' + artist + '"').replace(/\s/g, "%20"

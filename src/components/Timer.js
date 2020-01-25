@@ -31,11 +31,6 @@ class Timer extends React.Component {
         });
     }
 
-    /*
-        componentDidMount() {
-            this.start()
-        }
-*/
     componentWillUnmount() {
         this.pause()
     }
