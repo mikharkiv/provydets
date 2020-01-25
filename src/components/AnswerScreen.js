@@ -10,6 +10,7 @@ class AnswerScreen extends Component {
 
 	wrongAnswer(){
 		this.props.callbackFromParent("Inputs")
+		this.props.attemptUp()
 	}
 
 	rightAnswer(){

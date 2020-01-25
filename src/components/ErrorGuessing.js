@@ -8,6 +8,7 @@ class ErrorGuessing extends Component {
 
 	yesButt(){
 		this.props.callbackFromParent("Inputs")
+		this.props.attemptUp()
 	}
 
 	render() {
