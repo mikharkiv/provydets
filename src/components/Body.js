@@ -8,7 +8,6 @@ import ErrorGuessing from "./ErrorGuessing";
 
 const MicRecorder = require('mic-recorder-to-mp3');
 
-// New instance
 const recorder = new MicRecorder({
 	bitRate: 128
 });
@@ -25,10 +24,10 @@ class Body extends React.Component {
 		}
 	}
 
-	myCallback = (dataFromChild, type, requestData) => {
+	myCallback = (dataFromChild, requestData) => {
 		let answerTestProps;
 		console.log(requestData)
-		if (type != null && requestData != undefined) {
+		if (requestData != undefined) {
 			let artist = requestData["artist"]["name"]
 			let title = requestData["title"]
 			let preview = requestData["album"]["cover_big"]
@@ -140,9 +139,6 @@ class Listen extends React.Component {
 
 			//const player = new Audio(URL.createObjectURL(file));
 			//player.play()
-
-			//requestAudd(file)
-
 		}).catch((e) => {
 			alert('We could not retrieve your message');
 			console.log(e);
@@ -150,7 +146,7 @@ class Listen extends React.Component {
 	}
 
 	resolveRequest(call, data) {
-		call.props.callbackFromParent("AnswerScreen", "voice", data["result"]["deezer"])
+		call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
 	}
 
 	songRequest() {
@@ -158,9 +154,17 @@ class Listen extends React.Component {
 		requestAudd(this, this.resolveRequest, this.state.voice_sample)
 	}
 
+	deezer(call,data) {
+		call.props.callbackFromParent("AnswerScreen", data.data[0])
+	}
+
+	resolveHummingRequest(call, data) {
+		requestDeezer(call, call.deezer, data.result.list[0]["title"], data.result.list[0]["artist"]);
+	}
+
 	hummingRequest() {
 		console.log("Sending humming recognition request...");
-		//requestAudd(this, this.resolveRequest, this.state.voice_sample,"recognizeWithOffset")
+		requestAudd(this, this.resolveHummingRequest, this.state.voice_sample,"recognizeWithOffset")
 	}
 
 	componentWillUpdate(nextProps, nextState, nextContext) {
@@ -210,7 +214,7 @@ class Type extends React.Component {
 	}
 
 	deezer(call,data) {
-		//call.props.callbackFromParent("AnswerScreen", "lyrics", data.data[0])
+		call.props.callbackFromParent("AnswerScreen", data.data[0])
 	}
 
 	resolveRequest(call, data) {
