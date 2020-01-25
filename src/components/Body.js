@@ -30,6 +30,13 @@ class Body extends React.Component {
 			songsList:[]
 		}
 	}
+	
+	componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
 
 	//requestData comes in the format result["deezer"]
 	myCallback = (dataFromChild, requestData) => {

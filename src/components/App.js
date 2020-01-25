@@ -21,7 +21,7 @@ class App extends React.Component {
 	}
 
 	newGameCallback = () => {
-		console.log("hello from App.js")
+		this.child.myCallback("Inputs")
 	}
 
 	pointUp = (pointReceiver) => {
@@ -42,7 +42,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<Header newGameCallback={this.newGameCallback} pc={this.state.pc} user={this.state.user}/>
-				<Body pointUp={this.pointUp} attempt={this.state.attempt}/>
+				<Body onRef={ref => (this.child = ref)} pointUp={this.pointUp} attempt={this.state.attempt}/>
 				<Footer/>
 			</div>
 		);
