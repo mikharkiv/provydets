@@ -20,6 +20,10 @@ class App extends React.Component {
 		}
 	}
 
+	newGameCallback = () => {
+		console.log("hello from App.js")
+	}
+
 	pointUp = (pointReceiver) => {
 		switch (pointReceiver) {
 			case "pc":
@@ -37,7 +41,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<Header pc={this.state.pc} user={this.state.user}/>
+				<Header newGameCallback={this.newGameCallback} pc={this.state.pc} user={this.state.user}/>
 				<Body pointUp={this.pointUp} attempt={this.state.attempt}/>
 				<Footer/>
 			</div>

@@ -10,7 +10,7 @@ class Header extends React.Component {
 		return (
 			<header className="App-header">
 				<Score name="pc" score={this.props.pc}/>
-				<Buttons/>
+				<Buttons newGameCallback={this.props.newGameCallback} />
 				<Score name="user" score={this.props.user}/>
 			</header>
 		);

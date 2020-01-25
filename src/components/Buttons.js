@@ -20,7 +20,8 @@ class Buttons extends Component {
 		this.clickResetScores = this.clickResetScores.bind(this)
 		this.clickButtons = this.clickButtons.bind(this)
 		this.state = {
-			modalIsOpen: false
+			modalIsOpen: false,
+			newGameCallback: props.newGameCallback
 		};
 
 		this.openModal = this.openModal.bind(this);
@@ -52,7 +53,7 @@ class Buttons extends Component {
 
 	startNewGame(){
 		this.closeModal()
-		console.log("NEW GAME STARTS")
+		this.state.newGameCallback()
 	}
 
 	render() {
