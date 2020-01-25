@@ -94,6 +94,10 @@
 		&__img {
 			width: 4em;
 			height: 4em;
+			min-width: 4em;
+			min-height: 4em;
+			max-width: 4em;
+			max-height: 4em;
 			margin: 0.5em;
 		}
 	}
