@@ -106,9 +106,7 @@ class Listen extends React.Component {
 	}
 
 	resolveSongRequest(call, data) {
-		if (data.result === null) call.props.callbackFromParent("AnswerScreen", null)
-		else if (data["status"] === "error")
-			call.props.callbackFromParent("ErrorScreen", data["error"])
+		if (data.result === null || data["status"] === "error") call.props.callbackFromParent("AnswerScreen", null)
 		else
 			call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
 	}
@@ -118,9 +116,7 @@ class Listen extends React.Component {
 	}
 
 	resolveHummingRequest(call, data) {
-		if (data.result === null) call.props.callbackFromParent("AnswerScreen", null)
-		else if (data["status"] === "error")
-			call.props.callbackFromParent("ErrorScreen", data["error"])
+		if (data.result === null || data["status"] === "error") call.props.callbackFromParent("AnswerScreen", null)
 		else
 			requestDeezer(call, call.resolveDeezerRequest, data.result.list[0]["title"], data.result.list[0]["artist"]);
 	}
