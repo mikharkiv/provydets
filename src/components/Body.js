@@ -30,16 +30,17 @@ class Body extends React.Component {
 			component: <Inputs callbackFromParent={this.myCallback}/>,
 			// for test
 			// component: <StartLabel/>,
-			songsList:[]
+			songsList: []
 		}
 	}
 
 	componentDidMount() {
-    this.props.onRef(this)
-  }
-  componentWillUnmount() {
-    this.props.onRef(undefined)
-  }
+		this.props.onRef(this)
+	}
+
+	componentWillUnmount() {
+		this.props.onRef(undefined)
+	}
 
 	//requestData comes in the format result["deezer"]
 	myCallback = (dataFromChild, requestData) => {
@@ -66,25 +67,27 @@ class Body extends React.Component {
 			case
 			"Inputs"
 			:
-				if(requestData == "new game") {
+				if (requestData == "new game") {
 					this.setState({
 						songsList: []
 					})
-
-				}
-				this.setState({component: <Inputs callbackFromParent={this.myCallback}/>})
+					this.setState({component: <Inputs callbackFromParent={this.myCallback} stopTimer={true}/>})
+				} else
+					this.setState({component: <Inputs callbackFromParent={this.myCallback} stopTimer={false}/>})
 				break
 			case
 			"AnswerScreen"
 			:
 				if (answerTestProps != null) {
 					this.setState({
-						component: <AnswerScreen attemptUp={this.props.attemptUp} param={answerTestProps} callbackFromParent={this.myCallback}
+						component: <AnswerScreen attemptUp={this.props.attemptUp} param={answerTestProps}
+												 callbackFromParent={this.myCallback}
 												 pointUp={this.props.pointUp} song={requestData}/>
 					})
 				} else {
 					this.setState({
-						component: <ErrorGuessing attemptUp={this.props.attemptUp} callbackFromParent={this.myCallback} pointUp={this.props.pointUp}/>
+						component: <ErrorGuessing attemptUp={this.props.attemptUp} callbackFromParent={this.myCallback}
+												  pointUp={this.props.pointUp}/>
 					})
 				}
 				break
@@ -97,14 +100,15 @@ class Body extends React.Component {
 			case "WinScreen" :
 				console.table(requestData)
 				console.table('win screen')
-				if(requestData == "User")  {
+				if (requestData == "User") {
 					this.setState({
-						component: <WinScreen callbackFromParent={this.myCallback} songs={this.state.songsList} winner="User" attempt={this.props.attempt}/>
+						component: <WinScreen callbackFromParent={this.myCallback} songs={this.state.songsList}
+											  winner="User" attempt={this.props.attempt}/>
 					})
-				}
-				else {
+				} else {
 					this.setState({
-						component: <WinScreen callbackFromParent={this.myCallback} winner_song={requestData} songs={this.state.songsList} winner="PC" attempt={this.props.attempt}/>
+						component: <WinScreen callbackFromParent={this.myCallback} winner_song={requestData}
+											  songs={this.state.songsList} winner="PC" attempt={this.props.attempt}/>
 					})
 				}
 				break

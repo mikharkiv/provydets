@@ -60,7 +60,7 @@ class Listen extends React.Component {
 			console.error(e);
 		});
 	}
-	
+
 	stop(request_func) {
 		console.log("Stop recording...");
 		recorder.stop().getMp3().then(([buffer, blob]) => {
@@ -125,6 +125,7 @@ class Listen extends React.Component {
 	}
 
 	songButton = () => {
+		this.setState({isRecording: false})
 		if (this.state.voice_sample == null) {
 			this.stop(this.songRequest)
 		} else {
@@ -133,6 +134,7 @@ class Listen extends React.Component {
 	}
 
 	hummingButton = () => {
+		this.setState({isRecording: false})
 		if (this.state.voice_sample == null) {
 			this.stop(this.hummingRequest)
 		} else {
