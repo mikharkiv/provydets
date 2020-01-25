@@ -2,10 +2,15 @@ import React from 'react';
 import '../styles/reset.scss';
 import '../styles/App.scss';
 import Body from './Body';
+import Attempt from './Attempt';
 import Header from './Header';
 import Footer from "./Footer";
+import AnswerScreen from './AnswerScreen';
+import SongPreview from './SongPreview';
+import WinScreen from './WinScreen';
 
 class App extends React.Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,10 +21,10 @@ class App extends React.Component {
 	}
 
 	pointUp = (pointReceiver) => {
-		switch(pointReceiver){
+		switch (pointReceiver) {
 			case "pc":
-				let pc_points = this.state.pc+1;
-				this.setState({pc:pc_points});
+				let pc_points = this.state.pc + 1;
+				this.setState({ pc: pc_points });
 				break
 			case "user":
 				let user_points = this.state.user+1
@@ -28,8 +33,6 @@ class App extends React.Component {
 				break
 		}
 	}
-
-
 
 	render() {
 		return (

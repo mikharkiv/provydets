@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../styles/SongPreview.scss';
 
 class SongPreview extends Component {
 	constructor(props) {
