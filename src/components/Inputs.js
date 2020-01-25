@@ -39,6 +39,7 @@ class Listen extends React.Component {
 		this.hummingRequest = this.hummingRequest.bind(this)
 		this.resolveSongRequest = this.resolveSongRequest.bind(this)
 		this.resolveHummingRequest = this.resolveHummingRequest.bind(this)
+		this.resolveDeezerRequest = this.resolveDeezerRequest.bind(this)
 	}
 
 	record() {
@@ -59,10 +60,7 @@ class Listen extends React.Component {
 			console.error(e);
 		});
 	}
-
-	//const player = new Audio(URL.createObjectURL(file));
-	//player.play()
-
+	
 	stop(request_func) {
 		console.log("Stop recording...");
 		recorder.stop().getMp3().then(([buffer, blob]) => {
