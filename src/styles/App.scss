@@ -125,15 +125,29 @@
 		min-height: 0.6em;
 		border-radius: 1em;
 		border: 2px solid $beige;
-		background-color: $red;
+		background-color: $light-blue;
 		margin-top: 0.35em;
 		margin-right: 0.2em;
+		
+		
+		~ -timer-activated {
+			animation: mic-anim 1s infinite;
+		}
 	}
 	&--label {
 		margin-top: 0.3em;
 		width: 100%;
 		text-align: center;
 	}
+}
+.f {
+	& {
+		animation: mic-anim 1s infinite;
+	}
+}
+@keyframes mic-anim {
+	from {background-color: $light-blue;}
+	to {background-color: $red;}
 }
 .input {
 	flex-grow: 1;
@@ -154,6 +168,10 @@
 	&--img {
 		width: 4em;
 		height: 4em;
+		min-width: 4em;
+		min-height: 4em;
+		max-width: 4em;
+		max-height: 4em;
 		margin-bottom: 1em;
 		display: none;
 	}

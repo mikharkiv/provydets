@@ -44,9 +44,7 @@ class Body extends React.Component {
 
 	//requestData comes in the format result["deezer"]
 	myCallback = (dataFromChild, requestData) => {
-		console.log(requestData)
 		let answerTestProps;
-		//console.log(requestData)
 		if (dataFromChild === "AnswerScreen" && requestData != undefined && requestData["artist"] != undefined) {
 
 			let artist = requestData["artist"]["name"]
@@ -60,7 +58,6 @@ class Body extends React.Component {
 			};
 
 			this.state.songsList.push(requestData)
-			console.table(this.state.songsList)
 		}
 
 		switch (dataFromChild) {
@@ -98,8 +95,6 @@ class Body extends React.Component {
 				})
 				break
 			case "WinScreen" :
-				console.table(requestData)
-				console.table('win screen')
 				if (requestData == "User") {
 					this.setState({
 						component: <WinScreen callbackFromParent={this.myCallback} songs={this.state.songsList}

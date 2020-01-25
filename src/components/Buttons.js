@@ -46,10 +46,8 @@ class Buttons extends Component {
 		this.openModal()
 	}
 	clickResetScores(){
-		console.log("RESET SCORES")
 	}
 	clickButtons(){
-		console.log("BUTTON BUTTONS WS CLICKED")
 	}
 
 	startNewGame(){

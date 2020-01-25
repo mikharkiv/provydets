@@ -54,7 +54,6 @@ class Listen extends React.Component {
 	}
 
 	start() {
-		console.log("Start recording...");
 		recorder.start().then(() => {
 		}).catch((e) => {
 			console.error(e);
@@ -62,7 +61,6 @@ class Listen extends React.Component {
 	}
 
 	stop(request_func) {
-		console.log("Stop recording...");
 		recorder.stop().getMp3().then(([buffer, blob]) => {
 			const file = new File(buffer, 'voice_sample.mp3', {
 				type: blob.type,
@@ -75,7 +73,6 @@ class Listen extends React.Component {
 			}
 		}).catch((e) => {
 			alert('We could not retrieve your message');
-			console.log(e);
 		});
 	}
 
@@ -143,13 +140,11 @@ class Listen extends React.Component {
 	}
 
 	songRequest() {
-		console.log("Sending song recognition request...");
 		this.setState({isDisabled: true})
 		requestAudd(this, this.resolveSongRequest, this.state.voice_sample)
 	}
 
 	hummingRequest() {
-		console.log("Sending humming recognition request...");
 		this.setState({isDisabled: true})
 		requestAudd(this, this.resolveHummingRequest, this.state.voice_sample, "recognizeWithOffset")
 	}
@@ -190,7 +185,6 @@ class Type extends React.Component {
 
 	handleSubmit(event) {
 		this.setState({isDisabled: true})
-		console.log("Sending lyrics recognition request...");
 		event.preventDefault();
 		if (this.state.value != undefined)
 			requestAudd(this, this.resolveAuddRequest, null, 'findLyrics', this.state.value);

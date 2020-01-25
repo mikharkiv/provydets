@@ -68,7 +68,7 @@ class Timer extends React.Component {
     render() {
         return (
             <div className="timer">
-                <div className="timer--point"></div>
+                <div className={this.state.isOn ? "timer--point f" :"timer--point"}></div>
                 <p className="timer--label uppercase">{this.state.min}:{this.state.sec}</p>
             </div>
         )
