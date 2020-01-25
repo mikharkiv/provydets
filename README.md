@@ -4,6 +4,8 @@ A game based on Shazam's principe - guessing the song by singing, humming or lyr
 
 This project is the challenge task for Int20h2020 hackathon made on React and NodeJS using [audd.io](https://audd.io) and [Deezer](https://developers.deezer.com/api) api.
 
+You can find it on the [web page](http://mem-provydets.herokuapp.com) (using Heroku).
+
 ## How to run
 
 ### Step 0. Preparation
@@ -43,5 +45,5 @@ At the end of the game, you'll see the window with the winner, right answer and 
 
 ## Authors
 
-This app was created by Michael Postnikov [(@mikharkiv)](https://t.me/mikharkiv), Kyryl Turina [(@chddr)](https://t.me/chddr) and Vadim Nakytnyak [(@brtvsk)](https://t.me/brtvsk).
+This app was created by MEM team: Michael Postnikov [(@mikharkiv)](https://t.me/mikharkiv), Kyryl Turina [(@chddr)](https://t.me/chddr) and Vadim Nakytnyak [(@brtvsk)](https://t.me/brtvsk).
 Hope you enjoyed it!
