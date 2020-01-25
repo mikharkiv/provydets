@@ -34,9 +34,10 @@ function requestAudd(call, func, file, method, q) {
 }
 
 function requestDeezer(call, func, title, artist) {
+	console.log((PROXY + DEEZER_URL + 'track?q=' + title+' '+artist).replace(/\s/g,"%20"))
 	$.ajax({
-		url: PROXY + DEEZER_URL + 'track?q=' + title+' '+artist,
-		data: null,
+		url: (PROXY + DEEZER_URL + 'track?q=' + title+' '+artist).replace(/\s/g,"%20"),
+		data: 0,
 		cache: false,
 		contentType: false,
 		processData: false,
