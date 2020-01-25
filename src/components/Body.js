@@ -2,6 +2,7 @@ import React from 'react';
 import AnswerScreen from "./AnswerScreen";
 import ErrorGuessing from "./ErrorGuessing";
 import {Inputs} from "./Inputs";
+import {ErrorScreen} from "./ErrorScreen";
 
 class Body extends React.Component {
 
@@ -14,9 +15,10 @@ class Body extends React.Component {
 
 	//requestData comes in the format result["deezer"]
 	myCallback = (dataFromChild, requestData) => {
-		let answerTestProps;
 		console.log(requestData)
-		if (requestData != undefined) {
+		let answerTestProps;
+		//console.log(requestData)
+		if (requestData != undefined && requestData["artist"] != undefined) {
 			let artist = requestData["artist"]["name"]
 			let title = requestData["title"]
 			let preview = requestData["album"]["cover_big"]
@@ -47,6 +49,12 @@ class Body extends React.Component {
 						component: <ErrorGuessing callbackFromParent={this.myCallback} pointUp={this.props.pointUp}/>
 					})
 				}
+				break
+			case "ErrorScreen"
+			:
+				this.setState({
+					component: <ErrorScreen callbackFromParent={this.myCallback} error={requestData}/>
+				})
 				break
 		}
 
