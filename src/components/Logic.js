@@ -27,14 +27,12 @@ function requestAudd(call, func, file, method, q) {
 		processData: false,
 		method: 'POST',
 		success: function (data) {
-			console.table(data)
 			func(call, data)
 		}
 	})
 }
 
 function requestDeezer(call, func, title, artist) {
-	console.log((PROXY + DEEZER_URL + 'track?q=' + 'title:"' + title + '" artist:"' + artist + '"').replace(/\s/g, "%20"))
 	$.ajax({
 		url: (PROXY + DEEZER_URL
 			//  + 'track?q=' + 'title:"' + title + '" artist:"' + artist + '"').replace(/\s/g, "%20"
