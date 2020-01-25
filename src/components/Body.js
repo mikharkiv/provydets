@@ -4,7 +4,6 @@ import ErrorGuessing from "./ErrorGuessing";
 import WinScreen from './WinScreen';
 import {Inputs} from "./Inputs";
 import {ErrorScreen} from "./ErrorScreen";
-import WinScreen from "./WinScreen";
 
 // TODO: FOR TEST
 const answerTestProps = {
