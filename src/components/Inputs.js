@@ -181,8 +181,11 @@ class Type extends React.Component {
 		this.setState({isDisabled: true})
 		if (data === undefined || data["status"] === "error")
 			call.props.callbackFromParent("AnswerScreen", null)
-		else
-			requestDeezer(call, call.resolveDeezerRequest, data.result[0]["title"], data.result[0]["artist"]);
+		else {
+			if (data.result[0] === undefined)
+				call.props.callbackFromParent("AnswerScreen", null)
+			else requestDeezer(call, call.resolveDeezerRequest, data.result[0]["title"], data.result[0]["artist"]);
+		}
 	}
 
 	handleSubmit(event) {
