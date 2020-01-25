@@ -6,6 +6,7 @@ import Attempt from './Attempt';
 import Header from './Header';
 import Footer from "./Footer";
 import AnswerScreen from './AnswerScreen';
+import SongPreview from "./SongPreview";
 
 function App() {
 	// TODO: FOR TEST
@@ -15,6 +16,12 @@ function App() {
 		songTitle: "What a wounderful world",
 		songAuthor: "Louis Armstrong",
 	};
+	const somePlaylist = [
+		{
+			name: "Name", // song name
+			src: "http://www.nihilus.net/soundtracks/Static%20Memories.mp3", // song source address
+		}
+	]
 	
 	
 	return (
@@ -23,6 +30,7 @@ function App() {
 			<Attempt />
 			{/*<Body />*/}
 			<AnswerScreen param={answerTestProps} />
+			<SongPreview song={answerTestProps} />
 			<Footer/>
 		</div>
 	);
