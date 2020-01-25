@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../styles/SongPreview.scss';
 
 class SongPreview extends Component {
 	constructor(props) {
@@ -11,8 +12,10 @@ class SongPreview extends Component {
 				<div className="song_preview--image">
 					<img className="song_preview--image--img" src={ this.props.song.songPreview } alt={ this.props.song.songTitle }/>
 				</div>
-				<p className="song_preview--song_title">{ this.props.song.songTitle }</p>
-				<p className="song_preview--song_author">{ this.props.song.songAuthor }</p>
+				<div className="song_preview--title_container">
+					<p className="song_preview--song_title">{ this.props.song.songTitle }</p>
+					<p className="song_preview--song_author">{ this.props.song.songAuthor }</p>
+				</div>
 			</div>
 		);
 	}

@@ -1,0 +1,27 @@
+@import "Variables";
+@import "Components";
+
+.song_preview {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	grid-column-gap: 0.3em;
+	
+	&--image {
+		grid-column: 1;
+		
+		&--img {
+			width: 2em;
+			height: 2em;
+		}
+	}
+	
+	&--title_container {
+		grid-column: 2;
+	}
+	&--song_title {
+		margin-bottom: 0.2em;
+	}
+	&--song_author {
+		font-size: 0.7em;
+	}
+}
