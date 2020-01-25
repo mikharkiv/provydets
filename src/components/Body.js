@@ -1,152 +1,120 @@
-import React, {Component} from 'react';
-import 'mic-recorder-to-mp3' ;
-import {requestAudd} from './Logic'
-import{Timer} from "./Timer"
+import React from 'react';
+import AnswerScreen from "./AnswerScreen";
+import ErrorGuessing from "./ErrorGuessing";
+import WinScreen from './WinScreen';
+import {Inputs} from "./Inputs";
+import {ErrorScreen} from "./ErrorScreen";
+import StartLabel from './StartLabel';
 
-const MicRecorder = require('mic-recorder-to-mp3');
+// TODO: FOR TEST
+const answerTestProps = {
+	attempt: 1,
+	songPreview: "https://img.discogs.com/dADBPB6TzEoBdGQFKQy-MhHBA_0=/fit-in/388x374/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2027877-1259432078.jpeg.jpg",
+	songTitle: "What a wounderful world",
+	songAuthor: "Louis Armstrong",
+};
 
-// New instance
-const recorder = new MicRecorder({
-    bitRate: 128
-});
+const songs = [
+	answerTestProps,
+	answerTestProps,
+	answerTestProps,
+	answerTestProps,
+	answerTestProps
+];
 
-function Body() {
-    return (
-        <section className="App-body">
-            <Inputs/>
-        </section>
-    );
-}
+class Body extends React.Component {
 
-function Inputs() {
-    return (
-        <div className="input">
-            <Listen/>
-            <div className="or">
-                OR
-            </div>
-            <Type/>
-        </div>
-    )
-}
+	constructor(props) {
+		super(props);
+		this.state = {
+			component: <Inputs callbackFromParent={this.myCallback}/>,
+			// for test
+			// component: <StartLabel/>,
+			songsList:[]
+		}
+	}
 
-class Listen extends React.Component {
+	componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isRecording: false,
-            isDisabled:true,
-            voice_sample:null
-        };
-        this.record = this.record.bind(this);
-        this.songRequest = this.songRequest.bind(this)
-        this.hummingRequest = this.hummingRequest.bind(this)
-    }
+	//requestData comes in the format result["deezer"]
+	myCallback = (dataFromChild, requestData) => {
+		let answerTestProps;
+		if (dataFromChild === "AnswerScreen" && requestData != undefined && requestData["artist"] != undefined) {
 
-    record() {
-        if (this.state.isRecording) {
-            this.stop()
-            this.setState({isRecording: false})
-        } else {
-            this.setState({isDisabled:false})
-            this.start()
-            this.setState({isRecording:true})
-        }
-    }
+			let artist = requestData["artist"]["name"]
+			let title = requestData["title"]
+			let preview = requestData["album"]["cover_big"]
+			answerTestProps = {
+				attempt: this.state.attempt,
+				songPreview: preview,
+				songTitle: title,
+				songAuthor: artist,
+			};
 
-    start() {
-        console.log("Start recording...");
-        recorder.start().then(() => {
-        }).catch((e) => {
-            console.error(e);
-        });
-    }
+			this.state.songsList.push(requestData)
+		}
 
-    stop() {
-        console.log("Stop recording...\nSending Request...");
-        recorder.stop().getMp3().then(([buffer, blob]) => {
-            const file = new File(buffer, 'voice_sample.mp3', {
-                type: blob.type,
-                lastModified: Date.now()
-            });
-            this.setState({voice_sample:file})
+		switch (dataFromChild) {
+			case
+			"Inputs"
+			:
+				if(requestData == "new game") {
+					this.setState({
+						songsList: []
+					})
 
-            //const player = new Audio(URL.createObjectURL(file));
-            //player.play()
+				}
+				this.setState({component: <Inputs callbackFromParent={this.myCallback}/>})
+				break
+			case
+			"AnswerScreen"
+			:
+				if (answerTestProps != null) {
+					this.setState({
+						component: <AnswerScreen attemptUp={this.props.attemptUp} param={answerTestProps} callbackFromParent={this.myCallback}
+												 pointUp={this.props.pointUp} song={requestData}/>
+					})
+				} else {
+					this.setState({
+						component: <ErrorGuessing attemptUp={this.props.attemptUp} callbackFromParent={this.myCallback} pointUp={this.props.pointUp}/>
+					})
+				}
+				break
+			case "ErrorScreen"
+			:
+				this.setState({
+					component: <ErrorScreen callbackFromParent={this.myCallback} error={requestData}/>
+				})
+				break
+			case "WinScreen" :
+				if(requestData == "User")  {
+					this.setState({
+						component: <WinScreen callbackFromParent={this.myCallback} songs={this.state.songsList} winner="User" attempt={this.props.attempt}/>
+					})
+				}
+				else {
+					this.setState({
+						component: <WinScreen callbackFromParent={this.myCallback} winner_song={requestData} songs={this.state.songsList} winner="PC" attempt={this.props.attempt}/>
+					})
+				}
+				break
+		}
 
-            //requestAudd(file)
+	}
 
-        }).catch((e) => {
-            alert('We could not retrieve your message');
-            console.log(e);
-        });
-    }
+	render() {
+		return (
+			<section className="App-body">
+				{this.state.component}
+			</section>
+		);
+	}
 
-    songRequest(){
-        this.record()
-        requestAudd(this.state.voice_sample)
-    }
-
-    hummingRequest(){
-        this.record()
-        requestAudd(this.state.voice_sample,"recognizeWithOffset")
-    }
-
-    render() {
-        return (
-            <div className="listen">
-                <p>Press the mic <br/>
-                To start recording</p>
-                <img src="./res/mic.svg" alt="" className="mic" onClick={this.record}/>
-                <div>
-                    <Timer run={this.state.isRecording}></Timer>
-                </div>
-
-                <div className="audio-type-selection">
-                    <button className="button" disabled={this.state.isDisabled} onClick={this.songRequest}>
-                        Song
-                    </button>
-                    <button className="button" disabled={this.state.isDisabled} onClick={this.hummingRequest}>
-                        Humming
-                    </button>
-                </div>
-            </div>
-        )
-    }
-}
-
-class Type extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        requestAudd(null, 'findLyrics', this.state.value);
-        event.preventDefault();
-    }
-
-    render() {
-        return (
-            <div className="type">
-                <form onSubmit={this.handleSubmit}>
-                    <img src="./res/lyrics.svg" alt="" className="lyrics"></img>
-                    <textarea className="textarea" rows="2" placeholder="Your lyrics..." onChange={this.handleChange}/>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </div>
-        )
-    }
 }
 
 export default Body;  

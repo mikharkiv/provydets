@@ -1,0 +1,126 @@
+@import "Variables";
+
+body,
+button,
+input {
+	font-family: "Oswald", sans-serif;
+	font-weight: normal;
+	font-size: 18px;
+}
+h1 {
+	font-size: 1.3em;
+	text-transform: uppercase;
+	color: $beige;
+}
+p {
+	font-size: 0.8em;
+	line-height: 1.2em;
+	color: $beige;
+}
+.button {
+	background: $pink;
+	border: none;
+	padding: 0.3em 0.5em;
+	font-size: 0.9em;
+	border-radius: 8px;
+	text-align: center;
+	text-transform: uppercase;
+	color: rgba(241, 245, 242, 0.6);
+	transition-property: color;
+	transition: color 0.25s ease-in-out;
+	
+	&:hover {
+		color: rgba(241, 245, 242, 1);
+		text-decoration: underline;
+		text-decoration-line: 1px solid $beige;
+	}
+	&:active {
+		color: rgba(241, 245, 242, 1);
+	}
+	&:disabled,
+	&--disabled {
+		color: $silver;
+		background-color: $dark-pink;
+	}
+}
+.window {
+	padding: 0.5em;
+	background-color: $dark-blue;
+	border: 3px solid $light-blue;
+	border-radius: 10px;
+}
+
+.link {
+	border-bottom: 1px solid #000000;
+	text-decoration: none;
+	color: inherit;
+	transition: color 0.3s;
+	
+	&:hover {
+		border-bottom: 1px solid $pink;
+		color: $pink;
+	}
+	
+	&:visited {}
+}
+
+// react modal overlay
+.ReactModal__Overlay--after-open {
+	background-color: rgba($dark-blue, 0.9)!important;
+}
+.ReactModal__Content--after-open {
+	padding: 0.5em!important;
+	background-color: $dark-blue!important;
+	border: 3px solid $light-blue!important;
+	border-radius: 10px!important;
+	
+	> .button-group {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: center;
+		margin-top: 0.5em;
+	}
+}
+
+
+.uppercase {
+	text-transform: uppercase;
+}
+.t_center {
+	text-align: center;
+}
+.attempt_title {
+	margin: 0.25em 0;
+}
+
+/* Adaptivity */
+/* mobile screens */
+@media screen and (min-width: 420px) {}
+@media screen and (min-width: 576px) {}
+@media screen and (min-width: 680px) {
+	body {
+		font-size: 20px;
+	}
+}
+/* desktops, laptops, tablets */
+@media screen and (min-width: 768px) {
+	body {
+		font-size: 22px;
+	}
+}
+@media screen and (min-width: 920px) {
+	body {
+		font-size: 24px;
+	}
+}
+/* large screens */
+@media screen and (min-width: 1200px) {
+	body {
+		font-size: 28px;
+	}
+}
+@media screen and (min-width: 1400px) {
+	body {
+		font-size: 32px;
+	}
+}

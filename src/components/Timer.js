@@ -12,7 +12,7 @@ class Timer extends React.Component {
     }
 
     start() {
-        console.log("SHIT")
+        this.clear()
         this.timerID = setInterval(
             () => this.tick(),
             1000
@@ -72,8 +72,9 @@ class Timer extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.min}:{this.state.sec}</h1>
+            <div className="timer">
+                <div className={this.state.isOn ? "timer--point f" :"timer--point"}></div>
+                <p className="timer--label uppercase">{this.state.min}:{this.state.sec}</p>
             </div>
         )
     }

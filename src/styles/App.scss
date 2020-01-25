@@ -1,23 +1,5 @@
-$light-blue: #5f758e;
-$dark-blue: #2d3047;
-$beige: #dbdfac;
-$pink: #a53860;
-$black: #000;
-
-body,
-button {
-	font-family: "Oswald", sans-serif;
-}
-
-.App-header {
-	font-size: calc(40px + 2vmin);
-	height: 1.5em;
-
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-}
+@import "Variables";
+@import "Components";
 
 .App {
 	display: flex;
@@ -25,12 +7,12 @@ button {
 	align-items: center;
 	justify-content: center;
 	background-color: $dark-blue;
+	background-image: url("../media/back.svg");
+	background-position: center;
+	background-size: 80%;
+	background-repeat: repeat-y;
 	min-height: 100vh;
 	color: $beige;
-}
-.App-footer {
-	left: 0;
-	right: 0;
 }
 .App-footer,
 .App-header {
@@ -38,13 +20,48 @@ button {
 	background-color: $light-blue;
 	width: 100%;
 }
+.App-header {
+	height: fit-content;
+	padding: 0.3em 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	
+	> .score {
+		margin-bottom: 6px;
+	}
+}
+.score {
+	font-size: 1.5em;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0 20px;
+}
+.button-group {
+	display: flex;
+	flex-direction: row;
+	justify-items: stretch;
+	align-items: stretch;
+	justify-self: flex-end;
+	
+	> .button {
+		margin-bottom: 0.5em;
+		margin-right: 0.5em;
+	}
+	
+	&:last-child {
+		margin-right: 0;
+	}
+}
 
 .App-footer {
-	font-size: calc(12px + 1vmin);
+	font-size: 0.6em;
 	color: $black;
 
-	p {
-		margin: 0.75rem 0;
+	> p {
+		margin: 0.5em 0;
+		color: $black;
 	}
 }
 
@@ -57,58 +74,144 @@ button {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-image: url("../back.svg");
+	//background-image: url("../back.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
 	background-clip: content-box;
 }
-
-.score {
-	font-size: calc(5vmin);
-	text-align: center;
-	text-transform: uppercase;
+.listen {
+	width: 100%;
+	
+	&--mic {
+		width: 5em;
+		height: 5em;
+		border-radius: 3.5em;
+		background-color: $dark-blue;
+		border: 3px solid $pink;
+		margin-top: 0.3em;
+		
+		&__img {
+			width: 4em;
+			height: 4em;
+			margin: 0.5em;
+		}
+	}
+	&--buttons {
+		width: 100%;
+		
+		&--container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			width: 100%;
+			
+			> button {
+				width: 100%;
+				margin: 0.5em;
+				max-width: 250px;
+				align-self: center;
+			}
+		}
+	}
 }
-
+.timer {
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	
+	&--point {
+		min-width: 0.6em;
+		min-height: 0.6em;
+		border-radius: 1em;
+		border: 2px solid $beige;
+		background-color: $light-blue;
+		margin-top: 0.35em;
+		margin-right: 0.2em;
+		
+		
+		~ -timer-activated {
+			animation: mic-anim 1s infinite;
+		}
+	}
+	&--label {
+		margin-top: 0.3em;
+		width: 100%;
+		text-align: center;
+	}
+}
+.f {
+	& {
+		animation: mic-anim 1s infinite;
+	}
+}
+@keyframes mic-anim {
+	from {background-color: $light-blue;}
+	to {background-color: $red;}
+}
 .input {
 	flex-grow: 1;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: center;
 }
-
-.mic,
 .lyrics {
-	height: 20vmin;
-	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 85vw;
+	align-self: center;
+	flex-grow: 0;
+	
+	&--img {
+		width: 4em;
+		height: 4em;
+		min-width: 4em;
+		min-height: 4em;
+		max-width: 4em;
+		max-height: 4em;
+		margin-bottom: 1em;
+		display: none;
+	}
+	&--textarea {
+		margin-bottom: 1em;
+		width: 100%;
+		height: 100%;
+		font-size: 0.8em;
+		border-radius: 10px;
+		padding: 0.4em;
+		border: 2px solid $pink;
+		background-color: $dark-blue;
+		color: $beige;
+		resize: none;
+		flex-grow: 1;
+		background-image: url("../media/lyrics.svg");
+		background-size: 40%;
+		background-repeat: no-repeat;
+		background-position: center;
+		
+		&::placeholder {
+			color: $beige;
+		}
+	}
+	&--button {
+		width: 100%;
+	}
 }
-
 .or {
-	font-size: calc(24px + 4vmin);
+	font-size: 1.5em;
+	line-height: 1.2em;
+	flex-grow: unset;
+	text-align: center;
 }
-
 .listen,
 .type {
-	max-width: 500px;
-	width: 45%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-
-.audio-type-selection {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-
-	width: 100%;
-	button {
-		width: 100%;
-		margin: 1rem;
-	}
-}
-
 .textarea {
 	font-family: "Oswald", sans-serif;
 	font-size: calc(14px + 2vmin);
@@ -126,66 +229,71 @@ button {
 	}
 }
 
-.button-group {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	align-items: center;
-}
-
-.button {
-	background: $pink;
-	border: none;
-	padding: 0.5rem 1rem;
-	font-size: calc(3vmin);
-	border-radius: 1vmin;
-	text-align: center;
-	text-transform: uppercase;
-	color: rgba(241, 245, 242, 0.6);
-	transition-property: color;
-	transition: color 0.25s ease-in-out;
-
-	&:hover,
-	&:active {
-		color: rgba(241, 245, 242, 1);
-	}
-
-	/* middle child */
-	&:not(:first-child):not(:last-child) {
-		margin: 0 15px;
-	}
-}
-
-.link {
-	border-bottom: 1px solid #000000;
-	text-decoration: none;
-	color: inherit;
-	transition: color 0.3s;
-
-	&:hover {
-		border-bottom: 1px solid $pink;
-		color: $pink;
-	}
-
-	&:visited {
-	}
-}
-
 /* Adaptivity */
 /* mobile screens */
 @media screen and (min-width: 420px) {
+	.App-header {
+		flex-direction: row;
+		
+		&:first-child {
+			margin-bottom: 0;
+		}
+	}
+	.button-group {
+		flex-direction: row;
+	}
+	.button-group > .button {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.lyrics {
+		max-height: 70%;
+		&--img {
+			display: block;
+		}
+		&--textarea {
+			background-image: none;
+		}
+	}
+	.App-header > .score {
+		margin-bottom: 0;
+	}
 }
 @media screen and (min-width: 576px) {
-}
-@media screen and (min-width: 680px) {
+	.listen--mic {
+		width: 7em;
+		height: 7em;
+		border-radius: 3.5em;
+		background-color: $dark-blue;
+		border: 3px solid $pink;
+		margin-top: 0.5em;
+		
+		&__img {
+			width: 5em;
+			height: 5em;
+			margin: 1em;
+		}
+	}
 }
 /* desktops, laptops, tablets */
 @media screen and (min-width: 768px) {
-}
-@media screen and (min-width: 920px) {
-}
-/* large screens */
-@media screen and (min-width: 1200px) {
-}
-@media screen and (min-width: 1400px) {
+	.input {
+		flex-direction: row;
+	}
+	.listen {
+		margin: 0 2em;
+	}
+	.lyrics {
+		margin: 0 2em;
+		max-width: unset;
+		align-self: stretch;
+	}
+	.listen--buttons--container {
+		flex-direction: row;
+		max-width: unset;
+		
+		> button {
+			max-width: unset;
+		}
+	}
 }
