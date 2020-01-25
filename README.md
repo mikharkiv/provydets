@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Provydets
 
-## Available Scripts
+A game based on Shazam's principe - guessing the song by singing, humming or lyrics.
 
-In the project directory, you can run:
+This project is the challenge task for Int20h2020 hackathon made on React and NodeJS using [audd.io](https://audd.io) and [Deezer](https://developers.deezer.com/api) api.
+
+## How to run
+
+### Step 0. Preparation
+
+Install NodeJS from the [official website](https://nodejs.org), if you don't have one.
+
+### Step 1. Cloning
+
+Clone this repository on your PC using:
+
+### `git clone https://github.com/mikharkiv/provydets.git <folder>`
+
+### Step 2. Installation
+
+Navigate to your project directory and install the dependencies:
+
+### `npm install`
+
+### Step 3. Run
+
+Now you are ready to run the application! Type
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+and it will start the development server on your PC. Open [http://localhost:3000](http://localhost:3000) to view app in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# How to play
 
-### `npm test`
+After opening the app, press "New game" button (in the header) to start a new game. You can see your and PC's scores in the header.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then you can press the microphone button to start recording the song (press again to stop recording). After the song was recorded, you can press "Song" or "Humming" buttons to start guessing. Or, you can enter lyrics in the text field and press "Submit" button.
 
-### `npm run build`
+If the app couldn't recognize your song, you'll see the window with error. Otherwise, you'll see the window asking you whether PC is right or wrong.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+At the end of the game, you'll see the window with the winner, right answer and the songs offered.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Authors
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This app was created by Michael Postnikov [(@mikharkiv)](https://t.me/mikharkiv), Kyryl Turina [(@chddr)](https://t.me/chddr) and Vadim Nakytnyak [(@brtvsk)](https://t.me/brtvsk).
+Hope you enjoyed it!
