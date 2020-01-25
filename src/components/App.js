@@ -4,9 +4,6 @@ import '../styles/App.scss';
 import Body from './Body';
 import Header from './Header';
 import Footer from "./Footer";
-import AnswerScreen from "./AnswerScreen";
-import ErrorGuessing from "./ErrorGuessing";
-
 
 class App extends React.Component {
 	constructor(props) {
