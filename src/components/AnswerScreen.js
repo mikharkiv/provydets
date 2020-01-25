@@ -15,7 +15,7 @@ class AnswerScreen extends Component {
 
 	rightAnswer(){
 		this.props.pointUp("pc")
-		this.props.callbackFromParent("Inputs")
+		this.props.callbackFromParent("WinScreen",this.props.song)
 	}
 
 	render() {

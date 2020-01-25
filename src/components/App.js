@@ -14,8 +14,9 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			pc: 0,
-			user: 0
+			pc:0,
+			user:0,
+			attempt:1
 		}
 	}
 
@@ -26,8 +27,9 @@ class App extends React.Component {
 				this.setState({ pc: pc_points });
 				break
 			case "user":
-				let user_points = this.state.user + 1
-				this.setState({ user: user_points });
+				let user_points = this.state.user+1
+				this.setState({user:user_points});
+				this.setState({attempt:(this.state.attempt+1)});
 				break
 		}
 	}
@@ -35,9 +37,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<Header />
-				<Body />
-				<Footer />
+				<Header pc={this.state.pc} user={this.state.user}/>
+				<Body pointUp={this.pointUp} attempt={this.state.attempt}/>
+				<Footer/>
 			</div>
 		);
 	}
