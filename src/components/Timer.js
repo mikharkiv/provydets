@@ -12,7 +12,6 @@ class Timer extends React.Component {
     }
 
     start() {
-        console.log("SHIT")
         this.clear()
         this.timerID = setInterval(
             () => this.tick(),
@@ -32,11 +31,6 @@ class Timer extends React.Component {
         });
     }
 
-    /*
-        componentDidMount() {
-            this.start()
-        }
-*/
     componentWillUnmount() {
         this.pause()
     }
