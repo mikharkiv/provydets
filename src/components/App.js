@@ -21,7 +21,7 @@ class App extends React.Component {
 	}
 
 	newGameCallback = () => {
-		this.child.myCallback("Inputs")
+		this.child.myCallback("Inputs", "new game")
 	}
 
 	pointUp = (pointReceiver) => {

@@ -30,7 +30,7 @@ class Body extends React.Component {
 			songsList:[]
 		}
 	}
-	
+
 	componentDidMount() {
     this.props.onRef(this)
   }
@@ -63,6 +63,11 @@ class Body extends React.Component {
 			case
 			"Inputs"
 			:
+				if(requestData == "new game") {
+					this.setState({
+						songsList: []
+					})
+				}
 				this.setState({component: <Inputs callbackFromParent={this.myCallback}/>})
 				break
 			case
