@@ -146,7 +146,9 @@ class Listen extends React.Component {
 	}
 
 	resolveRequest(call, data) {
-		call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
+		if (data.result == undefined) call.props.callbackFromParent("AnswerScreen", null)
+		else
+			call.props.callbackFromParent("AnswerScreen", data["result"]["deezer"])
 	}
 
 	songRequest() {
@@ -154,17 +156,20 @@ class Listen extends React.Component {
 		requestAudd(this, this.resolveRequest, this.state.voice_sample)
 	}
 
-	deezer(call,data) {
+	deezer(call, data) {
 		call.props.callbackFromParent("AnswerScreen", data.data[0])
 	}
 
 	resolveHummingRequest(call, data) {
-		requestDeezer(call, call.deezer, data.result.list[0]["title"], data.result.list[0]["artist"]);
+		if (data.result === undefined) {
+			call.props.callbackFromParent("AnswerScreen", null)
+		} else
+			requestDeezer(call, call.deezer, data.result.list[0]["title"], data.result.list[0]["artist"]);
 	}
 
 	hummingRequest() {
 		console.log("Sending humming recognition request...");
-		requestAudd(this, this.resolveHummingRequest, this.state.voice_sample,"recognizeWithOffset")
+		requestAudd(this, this.resolveHummingRequest, this.state.voice_sample, "recognizeWithOffset")
 	}
 
 	componentWillUpdate(nextProps, nextState, nextContext) {
@@ -213,12 +218,15 @@ class Type extends React.Component {
 		this.setState({value: event.target.value});
 	}
 
-	deezer(call,data) {
+	deezer(call, data) {
 		call.props.callbackFromParent("AnswerScreen", data.data[0])
 	}
 
 	resolveRequest(call, data) {
-		requestDeezer(call, call.deezer, data.result[0]["title"], data.result[0]["artist"]);
+		if (data.result[0] === undefined) {
+			call.props.callbackFromParent("AnswerScreen", null)
+		} else
+			requestDeezer(call, call.deezer, data.result[0]["title"], data.result[0]["artist"]);
 	}
 
 	handleSubmit(event) {
